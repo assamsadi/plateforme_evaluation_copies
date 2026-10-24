@@ -1,0 +1,158 @@
+{
+  "blocks": [
+    {
+      "image_crop_path": "submissions/fed87b1a-450a-4452-98c8-2f731a0693d7/ocr_crops/page_1_block_1.png",
+      "content_type": "TEXT",
+      "structure_type": null,
+      "prediction_ocr": "1. Reformulation du problème. On doit calculer la valeur maximale de P que peut supporter la cercha sans qu'une des barres ne rompe. Les barres ont une section circulaire pleine de diamètre 30 mm. On donne aussi que l'esbeltez de la barre 3 est égale à 33.",
+      "structured_output": null,
+      "confidence_score": "0.98",
+      "reconstruction_confidence": null,
+      "bounding_box": {
+        "x": 26,
+        "y": 19,
+        "width": 932,
+        "height": 178
+      },
+      "page_number": 1,
+      "block_order_index": 1,
+      "student_label": "1.",
+      "origin": "HANDWRITTEN",
+      "is_struck_through": false,
+      "evidence_level": "label_explicite",
+      "fused_crop_paths": null
+    },
+    {
+      "image_crop_path": "submissions/fed87b1a-450a-4452-98c8-2f731a0693d7/ocr_crops/page_1_block_2.png",
+      "content_type": "TEXT",
+      "structure_type": null,
+      "prediction_ocr": "2. Réactions d'appui. On fait l'équilibre de toute la structure. FH = 0 Donc RAH = 0 kN. FV = 0 : RAV + RBV - 3P - P - 3P = 0 En faisant les moments autours de A : RBV x 2a - 2a x 3P + 2a x 3P = 0 Donc RBV = 0 kN. Finalement : RAV = 7P.",
+      "structured_output": null,
+      "confidence_score": "0.96",
+      "reconstruction_confidence": null,
+      "bounding_box": {
+        "x": 26,
+        "y": 182,
+        "width": 948,
+        "height": 156
+      },
+      "page_number": 1,
+      "block_order_index": 2,
+      "student_label": "2.",
+      "origin": "HANDWRITTEN",
+      "is_struck_through": false,
+      "evidence_level": "label_explicite",
+      "fused_crop_paths": null
+    },
+    {
+      "image_crop_path": "submissions/fed87b1a-450a-4452-98c8-2f731a0693d7/ocr_crops/page_1_block_3.png",
+      "content_type": "TEXT",
+      "structure_type": null,
+      "prediction_ocr": "3. Efforts dans les barres. Je commence par le nœud B cas il y a seulement deux inconnues. Les barres 3 et 4 sont à effort nul : N3 = 0 N4 = 0 Au nœud C : N5 sin \\theta - 3P = 0 N1 + N5 cos \\theta = 0 La géométrie donne : sin \\theta = 1 / \\sqrt{5} cos \\theta = 2 / \\sqrt{5} Donc : N5 = 3 \\sqrt{5} P et N1 = -6P. Par symétrie : N2 = -6P N7 = 3 \\sqrt{5} P. La barre 6 reprend la charge verticale : N6 = P. Les barres 1 et 2 sont donc en compression. Les barres 5 et 7 sont en traction.",
+      "structured_output": null,
+      "confidence_score": "0.95",
+      "reconstruction_confidence": null,
+      "bounding_box": {
+        "x": 26,
+        "y": 341,
+        "width": 942,
+        "height": 204
+      },
+      "page_number": 1,
+      "block_order_index": 3,
+      "student_label": "3.",
+      "origin": "HANDWRITTEN",
+      "is_struck_through": false,
+      "evidence_level": "label_explicite",
+      "fused_crop_paths": null
+    },
+    {
+      "image_crop_path": "submissions/fed87b1a-450a-4452-98c8-2f731a0693d7/ocr_crops/page_1_block_4.png",
+      "content_type": "TEXT",
+      "structure_type": null,
+      "prediction_ocr": "4. Vérification. La section vaut : A = \\pi d^2 / 4 avec d = 30 mm. Pour la compression de la barre 1, il faut tenir compte du flambement. La vérification donne une valeur maximale d'environ 29 kN pour P.",
+      "structured_output": null,
+      "confidence_score": "0.97",
+      "reconstruction_confidence": null,
+      "bounding_box": {
+        "x": 26,
+        "y": 551,
+        "width": 951,
+        "height": 133
+      },
+      "page_number": 1,
+      "block_order_index": 4,
+      "student_label": "4.",
+      "origin": "HANDWRITTEN",
+      "is_struck_through": false,
+      "evidence_level": "label_explicite",
+      "fused_crop_paths": null
+    },
+    {
+      "image_crop_path": "submissions/fed87b1a-450a-4452-98c8-2f731a0693d7/ocr_crops/page_1_block_5.png",
+      "content_type": "TEXT",
+      "structure_type": null,
+      "prediction_ocr": "5. Traction pour la barre 5 : \\sigma = N/A. Avec l'effort de la barre 5 et la contrainte admissible du matésian, on trouve : P = 28 kN.",
+      "structured_output": null,
+      "confidence_score": "0.96",
+      "reconstruction_confidence": null,
+      "bounding_box": {
+        "x": 26,
+        "y": 689,
+        "width": 951,
+        "height": 84
+      },
+      "page_number": 1,
+      "block_order_index": 5,
+      "student_label": "5.",
+      "origin": "HANDWRITTEN",
+      "is_struck_through": false,
+      "evidence_level": "label_explicite",
+      "fused_crop_paths": null
+    },
+    {
+      "image_crop_path": "submissions/fed87b1a-450a-4452-98c8-2f731a0693d7/ocr_crops/page_1_block_6.png",
+      "content_type": "TEXT",
+      "structure_type": null,
+      "prediction_ocr": "6. Conclusion. La valeur de P qui respecte toutes les vérifications est : Pmax = 28 kN. La barre limitante est la barre 5, qui est en traction.",
+      "structured_output": null,
+      "confidence_score": "0.98",
+      "reconstruction_confidence": null,
+      "bounding_box": {
+        "x": 26,
+        "y": 782,
+        "width": 890,
+        "height": 92
+      },
+      "page_number": 1,
+      "block_order_index": 6,
+      "student_label": "6.",
+      "origin": "HANDWRITTEN",
+      "is_struck_through": false,
+      "evidence_level": "label_explicite",
+      "fused_crop_paths": null
+    },
+    {
+      "image_crop_path": "submissions/fed87b1a-450a-4452-98c8-2f731a0693d7/ocr_crops/page_1_block_7.png",
+      "content_type": "TEXT",
+      "structure_type": null,
+      "prediction_ocr": "7. Évaluation. Le résultat est cohérent cas la valeur de traction",
+      "structured_output": null,
+      "confidence_score": "0.97",
+      "reconstruction_confidence": null,
+      "bounding_box": {
+        "x": 26,
+        "y": 880,
+        "width": 935,
+        "height": 38
+      },
+      "page_number": 1,
+      "block_order_index": 7,
+      "student_label": "7.",
+      "origin": "HANDWRITTEN",
+      "is_struck_through": false,
+      "evidence_level": "label_explicite",
+      "fused_crop_paths": null
+    }
+  ]
+}

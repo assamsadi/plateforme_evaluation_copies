@@ -1,0 +1,57 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+*.egg-info/
+
+# Node / frontend
+node_modules/
+frontend/.next/
+frontend/node_modules/
+.next/
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+
+# Local backups / dumps
+backups/
+_debug_*
+_points_dump.json
+raw_out.bin
+q_dump.txt
+q_decision_logs.txt
+sd_decision_logs.txt
+
+# Editor / OS
+.DS_Store
+Thumbs.db
+
+# Ad-hoc test documents dropped at repo root during manual testing sessions
+# (not source, not fixtures under tests/ — safe to leave untracked)
+/soumission*.pdf
+/soumission*.jpeg
+/examen_de_test.pdf
+/l3adaw.pdf
+/nouveautestdiallkhra.pdf
+/copie*.pdf
+/copie*.jpg
+/image.png
+/_reference_check.pdf
+/*.zip
+
+# AI assistant files
+.claude/
+CLAUDE.md
+AGENTS.md
+.mcp.json
+*.tsbuildinfo
+
+# Real exam documents / personal data
+*.pdf
+!docs/**/*.pdf

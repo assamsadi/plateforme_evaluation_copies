@@ -1,0 +1,218 @@
+services:
+  # postgres service for database
+  postgres:
+    image: pgvector/pgvector:pg16
+    container_name: evaluation-postgres
+    restart: unless-stopped
+    # Limite mémoire explicite — machine de test à 7.37 Go total, VM WSL2
+    # plafonnée à 4 Go (.wslconfig) : sans limite par conteneur, un service
+    # peut saturer toute la VM et planter Docker Desktop (constaté en
+    # pratique, sessions 2026-09-08/09).
+    mem_limit: 512m
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: evaluation_copies
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d evaluation_copies"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  # redis service for caching and message brokering
+  redis:
+    image: redis:7
+    container_name: evaluation-redis
+    restart: unless-stopped
+    mem_limit: 128m
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  # kafka-compatible event bus (Redpanda) for local development
+  redpanda:
+    image: docker.redpanda.com/redpandadata/redpanda:v24.2.4
+    container_name: evaluation-kafka
+    # 640m plutôt que 512m : le cgroup effectif vu par le conteneur (via
+    # Docker Desktop/WSL2) rapporte ~500 Mo dispo pour une limite de 512m
+    # (overhead), donc --memory doit rester nettement sous mem_limit, pas
+    # collé dessus (constaté : "insufficient physical memory: needed
+    # 536870912 available 500000000" avec 512m/512M).
+    mem_limit: 640m
+    command:
+      - redpanda
+      - start
+      # Deux listeners nommés sur le MÊME 0.0.0.0:9092 = conflit de bind
+      # (2 sockets distincts dans le même netns de conteneur ne peuvent pas
+      # écouter sur la même adresse:port) — port externe séparé (19092) pour
+      # les clients hôte, port interne (9092) inchangé pour les clients du
+      # réseau docker (worker/api via KAFKA_BOOTSTRAP_SERVERS=redpanda:9092).
+      - --kafka-addr
+      - internal://0.0.0.0:9092,external://0.0.0.0:19092
+      - --advertise-kafka-addr
+      - internal://redpanda:9092,external://localhost:19092
+      - --mode
+      - dev-container
+      - --smp
+      - "1"
+      # Sans ce plafond, Redpanda détecte la mémoire du HOST (pas celle du
+      # cgroup du conteneur) et essaie de s'auto-dimensionner en conséquence
+      # — dangereux sur une VM WSL2 à 4 Go partagée avec 4 autres services.
+      - --memory
+      - "400M"
+      - --reserve-memory
+      - "0M"
+    ports:
+      - "9092:9092"
+      - "19092:19092"
+    healthcheck:
+      test: ["CMD-SHELL", "rpk cluster health | grep -E 'Healthy:\\s+true'"]
+      interval: 5s
+      timeout: 5s
+      retries: 15
+      start_period: 20s
+
+  # worker Celery — consomme ocr/llm/notifications/maintenance (§ NotebookLM,
+  # OCR, correction IA...). Sous Linux, pas besoin du contournement
+  # --pool=solo requis sous Windows nu (fork disponible dans le conteneur).
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile.worker
+    container_name: evaluation-worker
+    restart: unless-stopped
+    # Concurrence réduite (défaut prefork = nb de CPU, ici 6) — la machine
+    # de test manque de RAM (7.37 Go au total) ; 2 processus suffisent
+    # largement pour un pilote à faible débit simultané, sans perte de
+    # fonctionnalité, et libèrent ~1 Go.
+    command: ["python", "-m", "celery", "-A", "app.worker_main:celery_app", "worker",
+              "-Q", "ocr,llm,notifications,maintenance", "--concurrency=2", "--loglevel=info"]
+    mem_limit: 1400m
+    # Défense en profondeur contre un fork-bomb dans le code étudiant exécuté
+    # par Judge0SandboxService.sandbox_local (app/infra_services/judge0_
+    # sandbox_service.py) — plafond au niveau du CONTENEUR entier (cgroup
+    # pids), indépendant de tout bug côté code Python (incident réel du
+    # 2026-09-10 : un fork-bomb de test a rendu le daemon Docker inutilisable
+    # malgré un kill censé s'appliquer côté Python).
+    pids_limit: 512
+    # `python -m celery` en PID 1 ne reap() jamais les zombies orphelins
+    # (petits-enfants forkés par le sandbox, reparentés au PID 1 du conteneur
+    # une fois leur parent direct tué) — constaté : 510/512 PIDs restés
+    # zombies après UN seul fork-bomb tué. `init: true` injecte tini comme
+    # PID 1 réel (celery passe en PID 2), qui reap() correctement — fix
+    # standard Docker pour cette classe de bug, pas une rustine spécifique.
+    init: true
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      redpanda:
+        condition: service_healthy
+    env_file:
+      - .env
+    environment:
+      # Surchargent .env (pensé pour un process tournant sur l'hôte,
+      # localhost) : à l'intérieur du réseau docker-compose, postgres/redis/
+      # redpanda sont résolus par nom de service, jamais localhost.
+      DATABASE_URL: "postgresql+asyncpg://postgres:postgres@postgres:5432/evaluation_copies"
+      REDIS_URL: "redis://redis:6379/0"
+      KAFKA_BOOTSTRAP_SERVERS: "redpanda:9092"
+      NOTEBOOKLM_STORAGE_PATH: "/root/.notebooklm/profiles/default/storage_state.json"
+    volumes:
+      # Session NotebookLM (cookies) : fichier réel sur l'hôte. En LECTURE-
+      # ÉCRITURE (pas :ro) — la librairie notebooklm-py réécrit les cookies
+      # à chaque rotation de session (comportement OAuth normal) ; en lecture
+      # seule, cette réécriture échoue silencieusement (loggé en warning) et
+      # la session vieillit plus vite qu'elle ne le devrait. Une
+      # ré-authentification complète (`python -m notebooklm login`) reste
+      # toujours une action côté hôte, jamais depuis le conteneur.
+      - C:/Users/aaae1/.notebooklm:/root/.notebooklm
+
+  # API FastAPI — même image de base que le worker (mêmes dépendances
+  # lourdes), juste un CMD différent (uvicorn au lieu de celery worker).
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    container_name: evaluation-api
+    restart: unless-stopped
+    mem_limit: 768m
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      redpanda:
+        condition: service_healthy
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: "postgresql+asyncpg://postgres:postgres@postgres:5432/evaluation_copies"
+      REDIS_URL: "redis://redis:6379/0"
+      KAFKA_BOOTSTRAP_SERVERS: "redpanda:9092"
+      NOTEBOOKLM_STORAGE_PATH: "/root/.notebooklm/profiles/default/storage_state.json"
+    volumes:
+      - C:/Users/aaae1/.notebooklm:/root/.notebooklm
+    ports:
+      - "8000:8000"
+
+  # Frontend Next.js — image autonome (output: "standalone"), build
+  # multi-étapes dans frontend/Dockerfile. NEXT_PUBLIC_* passées en build
+  # args : Next.js les inline dans le bundle client au build, un simple
+  # `environment:` runtime n'aurait aucun effet une fois l'image construite.
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_API_URL: "http://localhost:8000/api/v1"
+        NEXT_PUBLIC_GOOGLE_CLIENT_ID: "1054363568772-ce7rtbsnhp2ahk28lf1k6heds2kpffai.apps.googleusercontent.com"
+    container_name: evaluation-frontend
+    restart: unless-stopped
+    mem_limit: 512m
+    depends_on:
+      - api
+    ports:
+      - "3000:3000"
+
+  # Tunnels Cloudflare (accès public temporaire pour le pilote de test) —
+  # en conteneurs plutôt qu'en process nus : un process nu lancé par l'outil
+  # d'agent est parfois tué par sa propre protection mémoire de session
+  # (constaté en pratique, cf. session du 2026-09-04), ce qui casse le lien
+  # donné aux testeurs sans avertissement. Un conteneur avec restart:
+  # unless-stopped survit à ce mécanisme et se relance seul.
+  # ATTENTION : un tunnel "quick" (sans compte Cloudflare) obtient une URL
+  # aléatoire à CHAQUE démarrage — si ce conteneur redémarre, l'URL change
+  # et le frontend doit être reconstruit avec la nouvelle URL de l'API
+  # (cf. NEXT_PUBLIC_API_URL, frontend/.env.local).
+  tunnel-api:
+    image: cloudflare/cloudflared:latest
+    container_name: evaluation-tunnel-api
+    restart: unless-stopped
+    mem_limit: 64m
+    command: tunnel --no-autoupdate --url http://host.docker.internal:8000
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  tunnel-frontend:
+    image: cloudflare/cloudflared:latest
+    container_name: evaluation-tunnel-frontend
+    restart: unless-stopped
+    mem_limit: 64m
+    # Le frontend tourne maintenant dans le réseau docker-compose (service
+    # "frontend"), plus sur l'hôte — host.docker.internal ne le verrait plus.
+    command: tunnel --no-autoupdate --url http://frontend:3000
+    depends_on:
+      - frontend
+
+volumes:
+  postgres_data:

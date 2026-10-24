@@ -1,0 +1,6 @@
+[tool.pytest.ini_options]
+addopts = "-p no:asyncio --import-mode=importlib"
+markers = [
+    "azure_integration: marks tests requiring real Azure Storage connection",
+    "notebooklm_integration: marks tests requiring a real, already-authenticated NotebookLM session (unofficial API, not guaranteed stable)",
+]

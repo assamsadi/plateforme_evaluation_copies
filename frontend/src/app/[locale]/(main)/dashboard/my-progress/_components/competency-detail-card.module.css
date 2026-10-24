@@ -1,0 +1,352 @@
+/* Adapté de "Cyber Card" (Uiverse.io by 00Kubi) — appliqué UNIQUEMENT à
+   CompetencyDetailCard (demande explicite, scopé à cette carte précise).
+   Adaptations par rapport à la source :
+
+   - #card (id, collision garantie dès que 2+ cartes coexistent sur une
+     page — cas réel : une carte par compétence, 7 sur "Ma progression")
+     converti en classe .card, scopée par CSS Module de toute façon.
+   - Grille de trackers complétée à 25 cellules (5×5) — la source ne
+     collait que 9 des 25 div nécessaires, laissant les 2/3 inférieurs de
+     la carte sans effet de tilt au survol.
+   - Restructuré pour un contenu de hauteur VARIABLE (nombre de points
+     forts différent par compétence), contrairement à la source qui
+     supposait un .container à taille fixe (190×254px, tout en position
+     absolute) : ici .card reste dans le flux normal (sa vraie hauteur
+     de contenu détermine la hauteur de .container), .canvas (la grille
+     de 25 trackers) le recouvre en position:absolute par-dessus. Les
+     effets déclenchés par ".tracker:hover ~ #card" dans la source
+     deviennent ".container:has(.trN:hover) .card" ici — nécessaire
+     puisque les trackers ne sont plus des frères directs de .card dans
+     le DOM (:has() est supporté par tous les navigateurs évergreens).
+   - Teasers "HOVER ME"/"CYBER CARD"/"INTERACTIVE 3D EFFECT" retirés :
+     cette carte affiche de vraies données de compétence, jamais cachées
+     derrière un survol. Le vrai contenu (nom de compétence, tendance,
+     anneau de maîtrise, points forts) est fourni par le composant React,
+     rendu normalement dans .cardContent, toujours visible.
+   - Palette recolorée : #00ffaa/#00a2ff/#5c67ff/#ad51ff (cyan/bleu/
+     violet) remplacés par var(--primary) uniquement (vert de l'app,
+     seule couleur d'accent déjà utilisée ailleurs cette session) —
+     variations d'opacité plutôt qu'une deuxième teinte.
+   - Correctif (retour réel après premier essai) : le fond sombre
+     dégradé + l'ombre noire de la source rendaient la carte "quasi
+     noire" et le texte des anneaux illisible — jamais l'intention.
+     Fond/bordure/couleurs de texte déplacés vers les classes Tailwind
+     du composant (bg-success/10, border-border, text-foreground —
+     déjà éprouvées dans les deux thèmes ailleurs dans l'app) : .card
+     ne porte plus ici que la mécanique (radius/overflow/transition),
+     jamais plus de couleur en dur. */
+
+.container {
+  position: relative;
+  width: 100%;
+}
+
+.card {
+  position: relative;
+  z-index: 0;
+  border-radius: 12px;
+  transition: 300ms;
+  overflow: hidden;
+}
+
+.cardContent {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  perspective: 800px;
+}
+
+.tracker {
+  position: relative;
+}
+
+.tracker:hover {
+  cursor: pointer;
+}
+
+.cardGlare {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    125deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.05) 45%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0.05) 55%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  opacity: 0;
+  transition: opacity 300ms;
+}
+
+.cyberLines span {
+  position: absolute;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in oklch, var(--primary) 35%, transparent),
+    transparent
+  );
+}
+
+.cyberLines span:nth-child(1) {
+  top: 20%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: lineGrow 3s linear infinite;
+}
+
+.cyberLines span:nth-child(2) {
+  top: 40%;
+  right: 0;
+  width: 100%;
+  height: 1px;
+  transform: scaleX(0);
+  transform-origin: right;
+  animation: lineGrow 3s linear infinite 1s;
+}
+
+.cyberLines span:nth-child(3) {
+  top: 60%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: lineGrow 3s linear infinite 2s;
+}
+
+.cyberLines span:nth-child(4) {
+  top: 80%;
+  right: 0;
+  width: 100%;
+  height: 1px;
+  transform: scaleX(0);
+  transform-origin: right;
+  animation: lineGrow 3s linear infinite 1.5s;
+}
+
+@keyframes lineGrow {
+  0% {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+}
+
+.glowingElements {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.glow1,
+.glow2,
+.glow3 {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at center,
+    color-mix(in oklch, var(--primary) 30%, transparent) 0%,
+    transparent 70%
+  );
+  filter: blur(15px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.glow1 {
+  top: -20px;
+  left: -20px;
+}
+.glow2 {
+  top: 50%;
+  right: -30px;
+  transform: translateY(-50%);
+}
+.glow3 {
+  bottom: -20px;
+  left: 30%;
+}
+
+.cardParticles span {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: var(--primary);
+  border-radius: 50%;
+  opacity: 0;
+}
+
+@keyframes particleFloat {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(calc(var(--x, 0) * 30px), calc(var(--y, 0) * 30px));
+    opacity: 0;
+  }
+}
+
+.cardParticles span:nth-child(1) {
+  --x: 1;
+  --y: -1;
+  top: 40%;
+  left: 20%;
+}
+.cardParticles span:nth-child(2) {
+  --x: -1;
+  --y: -1;
+  top: 60%;
+  right: 20%;
+}
+.cardParticles span:nth-child(3) {
+  --x: 0.5;
+  --y: 1;
+  top: 20%;
+  left: 40%;
+}
+.cardParticles span:nth-child(4) {
+  --x: -0.5;
+  --y: 1;
+  top: 80%;
+  right: 40%;
+}
+.cardParticles span:nth-child(5) {
+  --x: 1;
+  --y: 0.5;
+  top: 30%;
+  left: 60%;
+}
+.cardParticles span:nth-child(6) {
+  --x: -1;
+  --y: 0.5;
+  top: 70%;
+  right: 60%;
+}
+
+.cardGlow {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  top: 50%;
+  width: 150%;
+  height: 150%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    circle at center,
+    color-mix(in oklch, var(--primary) 12%, transparent) 0%,
+    transparent 70%
+  );
+  filter: blur(20px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.scanLine {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    color-mix(in oklch, var(--primary) 12%, transparent),
+    transparent
+  );
+  transform: translateY(-100%);
+  animation: scanMove 2.5s linear infinite;
+}
+
+@keyframes scanMove {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+/* --- États déclenchés par le survol d'un tracker (cf. note en tête de
+   fichier — .container:has(...) remplace le sélecteur de fratrie de la
+   source, .card n'étant plus un frère direct des trackers). --- */
+
+.container:has(.tracker:hover) .card {
+  filter: brightness(1.15);
+}
+
+.container:has(.tracker:hover) .cardGlare,
+.container:has(.tracker:hover) .glow1,
+.container:has(.tracker:hover) .glow2,
+.container:has(.tracker:hover) .glow3,
+.container:has(.tracker:hover) .cardGlow {
+  opacity: 1;
+}
+
+.container:has(.tracker:hover) .cardParticles span {
+  animation: particleFloat 2s infinite;
+}
+
+.container:has(.tr1:hover) .card { transform: rotateX(20deg) rotateY(-10deg) rotateZ(0deg); }
+.container:has(.tr2:hover) .card { transform: rotateX(20deg) rotateY(-5deg) rotateZ(0deg); }
+.container:has(.tr3:hover) .card { transform: rotateX(20deg) rotateY(0deg) rotateZ(0deg); }
+.container:has(.tr4:hover) .card { transform: rotateX(20deg) rotateY(5deg) rotateZ(0deg); }
+.container:has(.tr5:hover) .card { transform: rotateX(20deg) rotateY(10deg) rotateZ(0deg); }
+.container:has(.tr6:hover) .card { transform: rotateX(10deg) rotateY(-10deg) rotateZ(0deg); }
+.container:has(.tr7:hover) .card { transform: rotateX(10deg) rotateY(-5deg) rotateZ(0deg); }
+.container:has(.tr8:hover) .card { transform: rotateX(10deg) rotateY(0deg) rotateZ(0deg); }
+.container:has(.tr9:hover) .card { transform: rotateX(10deg) rotateY(5deg) rotateZ(0deg); }
+.container:has(.tr10:hover) .card { transform: rotateX(10deg) rotateY(10deg) rotateZ(0deg); }
+.container:has(.tr11:hover) .card { transform: rotateX(0deg) rotateY(-10deg) rotateZ(0deg); }
+.container:has(.tr12:hover) .card { transform: rotateX(0deg) rotateY(-5deg) rotateZ(0deg); }
+.container:has(.tr13:hover) .card { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+.container:has(.tr14:hover) .card { transform: rotateX(0deg) rotateY(5deg) rotateZ(0deg); }
+.container:has(.tr15:hover) .card { transform: rotateX(0deg) rotateY(10deg) rotateZ(0deg); }
+.container:has(.tr16:hover) .card { transform: rotateX(-10deg) rotateY(-10deg) rotateZ(0deg); }
+.container:has(.tr17:hover) .card { transform: rotateX(-10deg) rotateY(-5deg) rotateZ(0deg); }
+.container:has(.tr18:hover) .card { transform: rotateX(-10deg) rotateY(0deg) rotateZ(0deg); }
+.container:has(.tr19:hover) .card { transform: rotateX(-10deg) rotateY(5deg) rotateZ(0deg); }
+.container:has(.tr20:hover) .card { transform: rotateX(-10deg) rotateY(10deg) rotateZ(0deg); }
+.container:has(.tr21:hover) .card { transform: rotateX(-20deg) rotateY(-10deg) rotateZ(0deg); }
+.container:has(.tr22:hover) .card { transform: rotateX(-20deg) rotateY(-5deg) rotateZ(0deg); }
+.container:has(.tr23:hover) .card { transform: rotateX(-20deg) rotateY(0deg) rotateZ(0deg); }
+.container:has(.tr24:hover) .card { transform: rotateX(-20deg) rotateY(5deg) rotateZ(0deg); }
+.container:has(.tr25:hover) .card { transform: rotateX(-20deg) rotateY(10deg) rotateZ(0deg); }
+
+.noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}

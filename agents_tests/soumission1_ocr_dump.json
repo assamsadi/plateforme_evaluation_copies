@@ -1,0 +1,198 @@
+{
+  "model": "gemini-flash-lite-latest",
+  "pages": [
+    {
+      "page_num": 1,
+      "blocks": [
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "On a une poutre triangulaire\nposée sur un appui à gauche qui bloque tout, et un appui à droite qui ne\nbloque que verticalement. Les charges sont 3P aux deux bouts et P au milieu.",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 117,
+            "y": 92,
+            "width": 621,
+            "height": 142
+          },
+          "student_label": null,
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Comme la charge totale (3P + P + 3P = 7P) tombe pile sur l'appui de gauche\nd'après la géométrie, cet appui prend tout, l'autre ne prend rien. Donc les\nbarres reliées à l'appui de droite (celles du haut horizontal et la verticale\nà gauche) ne travaillent pas du tout, effort nul.",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 117,
+            "y": 166,
+            "width": 637,
+            "height": 238
+          },
+          "student_label": null,
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Le reste est symétrique donc j'appelle T la barre horizontale du bas à gauche,\nqui est égale à celle de droite. Et j'appelle F la barre diagonale de gauche,\négale à celle de droite aussi.",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 117,
+            "y": 257,
+            "width": 673,
+            "height": 310
+          },
+          "student_label": null,
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Au premier nœud en bas à gauche :\n- horizontalement : T + F·cos(α) = 0\n- verticalement : F·sin(α) = 3P\navec cos(α) = 2/√5 et sin(α) = 1/√5 (calculé avec la géométrie du triangle)",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 117,
+            "y": 331,
+            "width": 718,
+            "height": 403
+          },
+          "student_label": null,
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Donc F = 3P√5 et T = -6P (compression)",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 117,
+            "y": 422,
+            "width": 441,
+            "height": 439
+          },
+          "student_label": null,
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Pour la barre verticale du milieu, j'appelle ça V, en équilibrant le nœud\ncentral : V = P",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 117,
+            "y": 461,
+            "width": 677,
+            "height": 494
+          },
+          "student_label": null,
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Maintenant pour trouver P max, je prends la contrainte du matériau (acier,\n275 MPa) et je calcule pour chaque barre chargée.",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 117,
+            "y": 515,
+            "width": 715,
+            "height": 548
+          },
+          "student_label": null,
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Pour F en traction : contrainte = F / (aire section) = 3P√5×1000 / (π×15²)\nEn égalant à 275 : P = 28 (à peu près, j'ai arrondi)",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 117,
+            "y": 571,
+            "width": 694,
+            "height": 603
+          },
+          "student_label": null,
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Pour T en compression, il faut le coefficient de flambement mais j'ai pas\neu le temps de chercher la bonne valeur dans le tableau, j'ai juste estimé\n1.1 comme dans un exemple similaire vu en cours.",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 117,
+            "y": 625,
+            "width": 718,
+            "height": 678
+          },
+          "student_label": null,
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Avec ça : P = 29 environ",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 117,
+            "y": 699,
+            "width": 313,
+            "height": 713
+          },
+          "student_label": null,
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Donc au final P = 28 kN parce que c'est la valeur la plus petite qui limite.",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 117,
+            "y": 735,
+            "width": 694,
+            "height": 749
+          },
+          "student_label": null,
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        }
+      ],
+      "error": null
+    }
+  ]
+}

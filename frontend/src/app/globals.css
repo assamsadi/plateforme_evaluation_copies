@@ -1,0 +1,825 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "katex/dist/katex.min.css";
+
+/* Theme preset styles: these override CSS variables based on the selected data-theme-preset */
+@import "../styles/presets/brutalist.css";
+@import "../styles/presets/soft-pop.css";
+@import "../styles/presets/tangerine.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --animate-aurora: aurora 60s linear infinite;
+  --animate-first: moveVertical 30s ease infinite;
+  --animate-second: moveInCircle 20s reverse infinite;
+  --animate-third: moveInCircle 40s linear infinite;
+  --animate-fourth: moveHorizontal 40s ease infinite;
+  --animate-fifth: moveInCircle 20s ease infinite;
+
+  @keyframes moveHorizontal {
+    0% {
+      transform: translateX(-50%) translateY(-10%);
+    }
+    50% {
+      transform: translateX(50%) translateY(10%);
+    }
+    100% {
+      transform: translateX(-50%) translateY(-10%);
+    }
+  }
+
+  @keyframes moveInCircle {
+    0% {
+      transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(180deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes moveVertical {
+    0% {
+      transform: translateY(-50%);
+    }
+    50% {
+      transform: translateY(50%);
+    }
+    100% {
+      transform: translateY(-50%);
+    }
+  }
+
+  @keyframes aurora {
+    from {
+      background-position:
+        50% 50%,
+        50% 50%;
+    }
+    to {
+      background-position:
+        350% 50%,
+        350% 50%;
+    }
+  }
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-danger: var(--destructive);
+  --color-danger-foreground: var(--danger-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --font-heading: var(--font-sans);
+  --font-sans: var(--font-sans);
+  --color-invert-foreground: var(--color-zinc-50);
+  --color-invert: var(--invert);
+  --color-destructive-foreground: var(--destructive-foreground);
+
+  /* Palette "papier/forêt" — page Exercice (C2PCTAssess), refonte 2026-09-11.
+     Valeurs fixes (jamais oklch) : demandées ainsi, mappées vers des
+     variables (forest, paper, ink, line, amber, coral) qui, elles, changent
+     de valeur entre :root et .dark (même schéma que
+     --primary/--info/--success/--warning ci-dessus) — pas une couleur figée
+     par thème, cf. blocs :root/.dark plus bas. */
+  --color-forest-950: var(--forest-950);
+  --color-forest-800: var(--forest-800);
+  --color-forest-700: var(--forest-700);
+  --color-forest-500: var(--forest-500);
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-line: var(--line);
+  --color-amber: var(--amber-accent);
+  --color-amber-bg: var(--amber-accent-bg);
+  --color-coral: var(--coral-accent);
+  --color-coral-bg: var(--coral-accent-bg);
+
+  /* Fraunces (next/font/google, cf. lib/fonts/registry.ts) — titres de la
+     page Exercice UNIQUEMENT (appliqué explicitement via la classe
+     font-serif dans les composants concernés, jamais dans @layer base sur
+     h1/h2 globalement : ça affecterait tout le dashboard, hors périmètre
+     de cette refonte). */
+  --font-serif: var(--font-fraunces);
+
+  /* Échelle de tailles native Tailwind v4 (génère directement les classes .text-*) —
+     2e passage +2px sur chaque taille (2026-09-11, même technique que le
+     premier passage documenté ci-dessous : incrément uniforme, jamais un
+     correctif page par page). Toutes les classes text-xs à text-2xl
+     cascadent automatiquement partout où elles sont déjà utilisées (titres,
+     tableaux, boutons, badges, formulaires, pagination...) puisqu'elles
+     référencent TOUTES ces mêmes variables — aucun fichier composant à
+     modifier pour cette partie. Line-height : même écart absolu conservé
+     qu'avant ce passage (+2px partout aussi), ratio confort résultant
+     1.25-1.4, cohérent avec la fourchette déjà visée ici.
+     Historique (1er passage) : +2px sur chaque taille de police (même
+     incrément uniforme que le passage précédent depuis les valeurs par
+     défaut de Tailwind), pour que TOUT le texte de contenu de la
+     plateforme (peu importe le fichier/la page) soit couvert d'un seul
+     coup — plutôt qu'un correctif page par page qui oublie toujours un
+     endroit.
+     Indirection via --text-size-* (au lieu de valeurs littérales
+     directement ici) : nécessaire pour que [data-font-scale="v1"]
+     ci-dessous (2 pages déjà agrandies manuellement, à ne pas cumuler avec
+     ce 2e passage) puisse réellement les surcharger au runtime — une
+     valeur littérale ici serait inlinée telle quelle dans chaque classe
+     .text-* générée par Tailwind, sans variable CSS restante à surcharger
+     (même mécanisme d'indirection que --color-primary: var(--primary) plus
+     haut, qui permet à .dark de le faire pour les couleurs). */
+  --text-xs: var(--text-size-xs);
+  --text-xs--line-height: var(--text-size-xs-leading);
+  --text-sm: var(--text-size-sm);
+  --text-sm--line-height: var(--text-size-sm-leading);
+  --text-base: var(--text-size-base);
+  --text-base--line-height: var(--text-size-base-leading);
+  --text-lg: var(--text-size-lg);
+  --text-lg--line-height: var(--text-size-lg-leading);
+  --text-xl: var(--text-size-xl);
+  --text-xl--line-height: var(--text-size-xl-leading);
+  --text-2xl: var(--text-size-2xl);
+  --text-2xl--line-height: var(--text-size-2xl-leading);
+}
+
+/* Default theme styles (used when no data-theme-preset is set or when 'default' is selected).
+These serve as the fallback; there is no separate default.css file. */
+:root {
+  /* Valeurs réelles de l'échelle --text-* (2e passage, cf. @theme inline
+     plus haut) — jamais redéfinies dans .dark, une taille de police ne
+     change pas avec le thème clair/sombre. */
+  --text-size-xs: 1.125rem; /* 18px */
+  --text-size-xs-leading: 1.5rem; /* 24px */
+  --text-size-sm: 1.25rem; /* 20px */
+  --text-size-sm-leading: 1.75rem; /* 28px */
+  --text-size-base: 1.375rem; /* 22px */
+  --text-size-base-leading: 1.875rem; /* 30px */
+  --text-size-lg: 1.5rem; /* 24px */
+  --text-size-lg-leading: 2rem; /* 32px */
+  --text-size-xl: 1.75rem; /* 28px */
+  --text-size-xl-leading: 2.25rem; /* 36px */
+  --text-size-2xl: 2rem; /* 32px */
+  --text-size-2xl-leading: 2.5rem; /* 40px */
+
+  --radius: 0.625rem;
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  /* Alignée sur --sidebar-primary (#059669, emerald-600) — une seule
+     couleur de marque pour tout le dashboard, cf. unification design
+     system. Conversion oklch calculée depuis le hex réel (sRGB -> OKLab),
+     jamais approximée. */
+  --primary: oklch(0.596 0.127 163.225);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  /* 4 tokens sémantiques stricts (info/success/warning/danger — danger
+     réutilise --destructive ci-dessus) — seules couleurs de statut/
+     feedback autorisées dans le dashboard, cf. unification design system.
+     Contraste vérifié >= 4.5:1 (AA texte) sur --card en light ET dark
+     (calcul WCAG réel, pas estimé) :
+       info    (#2563eb vs blanc)  : 5.17:1
+       success (#047857 vs blanc)  : 5.48:1
+       warning (#b45309 vs blanc)  : 5.02:1 */
+  --info: oklch(0.546 0.215 262.881);
+  --info-foreground: oklch(1 0 0);
+  --success: oklch(0.508 0.105 165.612);
+  --success-foreground: oklch(1 0 0);
+  --warning: oklch(0.555 0.146 48.998);
+  --warning-foreground: oklch(1 0 0);
+  --danger-foreground: oklch(1 0 0);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --sidebar: #f4fbf7;
+  --sidebar-foreground: #064e3b;
+  --sidebar-primary: #059669;
+  --sidebar-primary-foreground: #ffffff;
+  /* Éclairci (2026-09-11, demande explicite) — #e6f7ef -> #f0faf6. */
+  --sidebar-accent: #f0faf6;
+  --sidebar-accent-foreground: #047857;
+  --sidebar-border: #d7f3e5;
+  --sidebar-ring: #10b981;
+
+  /* fonts */
+  --font-sans: var(--font-geist);
+  --font-mono: var(--font-geist-mono);
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --destructive-foreground: var(--color-red-800);
+  --invert: var(--color-zinc-900);
+  --invert-foreground: var(--color-zinc-50);
+
+  /* Palette "papier/forêt" — page Exercice, valeurs light (cf. bloc
+     @theme inline ci-dessus pour le mapping vers les classes Tailwind). */
+  --forest-950: #0e2a22;
+  --forest-800: #144332;
+  --forest-700: #1b5a43;
+  --forest-500: #2c7a5a;
+  --paper: #f2f4ef;
+  --ink: #1b241f;
+  --ink-soft: #5a6b62;
+  --line: #dde3da;
+  --amber-accent: #9c6b12;
+  --amber-accent-bg: #fbf0dc;
+  --coral-accent: #a63f35;
+  --coral-accent-bg: #f8e9e6;
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  /* Alignée sur --sidebar-primary dark (#10b981, emerald-500 — plus clair
+     que la version light pour rester lisible sur fond sombre, même
+     logique déjà appliquée par --sidebar-primary lui-même). */
+  --primary: oklch(0.696 0.149 162.48);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  /* Contraste vérifié >= 4.5:1 (AA texte) sur --card dark (calcul WCAG réel) :
+       info    (#60a5fa vs card dark) : 5.34:1
+       success (#34d399 vs card dark) : 7.06:1 (même teinte que l'accent
+         actif sombre du sidebar, cf. [data-sidebar="menu-button"] plus bas)
+       warning (#fbbf24 vs card dark) : 8.13:1 */
+  --info: oklch(0.714 0.143 254.624);
+  --info-foreground: oklch(0.205 0 0);
+  --success: oklch(0.773 0.153 163.223);
+  --success-foreground: oklch(0.205 0 0);
+  --warning: oklch(0.837 0.164 84.429);
+  --warning-foreground: oklch(0.205 0 0);
+  --danger-foreground: oklch(0.205 0 0);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --sidebar: #0f1c16;
+  --sidebar-foreground: #ecfdf5;
+  --sidebar-primary: #10b981;
+  --sidebar-primary-foreground: #ffffff;
+  /* Éclairci (2026-09-11, demande explicite) — #172d23 -> #204133. */
+  --sidebar-accent: #204133;
+  --sidebar-accent-foreground: #6ee7b7;
+  --sidebar-border: #1e3a2d;
+  --sidebar-ring: #059669;
+  --destructive-foreground: var(--color-red-600);
+  --invert: var(--color-zinc-700);
+  --invert-foreground: var(--color-zinc-50);
+
+  /* Palette "papier/forêt" — page Exercice, valeurs dark : fonds (paper,
+     line) nettement plus sombres ; teintes d'accent (forest, amber, coral)
+     légèrement éclaircies pour rester lisibles sur fond sombre (même
+     logique que --primary/.dark --primary ci-dessus). */
+  --forest-950: #163227;
+  --forest-800: #1c4a38;
+  --forest-700: #2e8562;
+  --forest-500: #4fa37d;
+  --paper: #12180f;
+  --ink: #edefea;
+  --ink-soft: #9aa79e;
+  --line: #2a362e;
+  --amber-accent: #d9a441;
+  --amber-accent-bg: #2b2210;
+  --coral-accent: #d9695c;
+  --coral-accent-bg: #2e1613;
+}
+
+/* Annule le 2e passage +2px de l'échelle --text-* (ci-dessus, @theme inline)
+   pour les 2 pages déjà agrandies manuellement AVANT ce passage global
+   (Exercice, Mes exercices) — sans ça leurs éléments déjà bumped cumulent
+   avec ce 2e passage et deviennent plus grands que le reste de l'app,
+   demande explicite 2026-09-11 : "ne pas les appliquer, c'est déjà
+   appliqué". Restaure les valeurs du 1er passage (celles en place quand ces
+   2 pages ont été retouchées) scopées au conteneur racine de chacune
+   (data-font-scale="v1" posé dans exercise-detail.tsx / exercises.tsx) —
+   n'affecte que leurs descendants, jamais le reste du dashboard. */
+[data-font-scale="v1"] {
+  --text-size-xs: 1rem; /* 16px */
+  --text-size-xs-leading: 1.375rem; /* 22px */
+  --text-size-sm: 1.125rem; /* 18px */
+  --text-size-sm-leading: 1.625rem; /* 26px */
+  --text-size-base: 1.25rem; /* 20px */
+  --text-size-base-leading: 1.75rem; /* 28px */
+  --text-size-lg: 1.375rem; /* 22px */
+  --text-size-lg-leading: 1.875rem; /* 30px */
+  --text-size-xl: 1.625rem; /* 26px */
+  --text-size-xl-leading: 2.125rem; /* 34px */
+  --text-size-2xl: 1.875rem; /* 30px */
+  --text-size-2xl-leading: 2.375rem; /* 38px */
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    @apply font-sans;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-background text-foreground text-sm font-normal leading-normal;
+    font-family:
+      var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+
+  h1 {
+    @apply text-2xl font-bold tracking-tight text-foreground;
+  }
+
+  h2 {
+    @apply text-xl font-bold tracking-tight text-foreground;
+  }
+
+  h3 {
+    @apply text-base font-bold text-foreground;
+  }
+
+  h4 {
+    @apply text-sm font-semibold text-foreground;
+  }
+
+  p {
+    @apply text-sm leading-relaxed;
+  }
+
+  small {
+    @apply text-xs font-medium text-muted-foreground;
+  }
+}
+
+@layer utilities {
+  [data-theme-preset]:not([data-theme-preset="default"]) .shadow-2xs {
+    box-shadow: var(--shadow-2xs);
+  }
+
+  [data-theme-preset]:not([data-theme-preset="default"]) .shadow-xs {
+    box-shadow: var(--shadow-xs);
+  }
+
+  [data-theme-preset]:not([data-theme-preset="default"]) .shadow-sm {
+    box-shadow: var(--shadow-sm);
+  }
+
+  [data-theme-preset]:not([data-theme-preset="default"]) .shadow {
+    box-shadow: var(--shadow);
+  }
+
+  [data-theme-preset]:not([data-theme-preset="default"]) .shadow-md {
+    box-shadow: var(--shadow-md);
+  }
+
+  [data-theme-preset]:not([data-theme-preset="default"]) .shadow-lg {
+    box-shadow: var(--shadow-lg);
+  }
+
+  [data-theme-preset]:not([data-theme-preset="default"]) .shadow-xl {
+    box-shadow: var(--shadow-xl);
+  }
+
+  [data-theme-preset]:not([data-theme-preset="default"]) .shadow-2xl {
+    box-shadow: var(--shadow-2xl);
+  }
+
+  /* ─── Uiverse.io Skew Shutter Button Effect ─────────────────────────────────
+     Adapté du design Uiverse.io (by nikk7007) avec tokens dynamiques (--primary).
+     Double volet skew qui glisse au survol avec transition fluide. */
+  .btn-uiverse {
+    --btn-color: var(--primary);
+    --btn-text-hover: #ffffff;
+    position: relative;
+    background-color: transparent !important;
+    border: 1.5px solid var(--btn-color) !important;
+    border-radius: var(--radius, 0.625rem);
+    transition:
+      color 0.4s ease,
+      border-color 0.4s ease,
+      transform 0.15s ease,
+      box-shadow 0.25s ease;
+    overflow: hidden;
+    cursor: pointer;
+    z-index: 1;
+    color: var(--btn-color) !important;
+    font-weight: 600;
+  }
+
+  .btn-uiverse::before,
+  .btn-uiverse::after {
+    content: "";
+    display: block;
+    height: 100%;
+    width: 100%;
+    transform: skew(90deg) translate(-50%, -50%);
+    position: absolute;
+    inset: 50%;
+    left: 25%;
+    z-index: -1;
+    transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    background-color: var(--btn-color);
+  }
+
+  .btn-uiverse::before {
+    top: -50%;
+    left: -25%;
+    transform: skew(90deg) rotate(180deg) translate(-50%, -50%);
+  }
+
+  .btn-uiverse:hover::before {
+    transform: skew(45deg) rotate(180deg) translate(-50%, -50%);
+  }
+
+  .btn-uiverse:hover::after {
+    transform: skew(45deg) translate(-50%, -50%);
+  }
+
+  .btn-uiverse:hover {
+    color: var(--btn-text-hover) !important;
+    box-shadow: 0 4px 14px 0 oklch(0.596 0.127 163.225 / 30%);
+  }
+
+  .btn-uiverse:hover svg {
+    color: var(--btn-text-hover) !important;
+  }
+
+  .btn-uiverse:active {
+    filter: brightness(0.9);
+    transform: scale(0.97);
+  }
+
+  .btn-uiverse-destructive {
+    --btn-color: var(--destructive);
+    --btn-text-hover: #ffffff;
+    position: relative;
+    background-color: transparent !important;
+    border: 1.5px solid var(--btn-color) !important;
+    border-radius: var(--radius, 0.625rem);
+    transition:
+      color 0.4s ease,
+      border-color 0.4s ease,
+      transform 0.15s ease,
+      box-shadow 0.25s ease;
+    overflow: hidden;
+    cursor: pointer;
+    z-index: 1;
+    color: var(--btn-color) !important;
+    font-weight: 600;
+  }
+
+  .btn-uiverse-destructive::before,
+  .btn-uiverse-destructive::after {
+    content: "";
+    display: block;
+    height: 100%;
+    width: 100%;
+    transform: skew(90deg) translate(-50%, -50%);
+    position: absolute;
+    inset: 50%;
+    left: 25%;
+    z-index: -1;
+    transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    background-color: var(--btn-color);
+  }
+
+  .btn-uiverse-destructive::before {
+    top: -50%;
+    left: -25%;
+    transform: skew(90deg) rotate(180deg) translate(-50%, -50%);
+  }
+
+  .btn-uiverse-destructive:hover::before {
+    transform: skew(45deg) rotate(180deg) translate(-50%, -50%);
+  }
+
+  .btn-uiverse-destructive:hover::after {
+    transform: skew(45deg) translate(-50%, -50%);
+  }
+
+  .btn-uiverse-destructive:hover {
+    color: var(--btn-text-hover) !important;
+    box-shadow: 0 4px 14px 0 oklch(0.577 0.245 27.325 / 30%);
+  }
+
+  .btn-uiverse-destructive:hover svg {
+    color: var(--btn-text-hover) !important;
+  }
+
+  .btn-uiverse-destructive:active {
+    filter: brightness(0.9);
+    transform: scale(0.97);
+  }
+
+  html[data-font="montserrat"] body {
+    --font-sans: var(--font-montserrat);
+  }
+  html[data-font="inter"] body {
+    --font-sans: var(--font-inter);
+  }
+  html[data-font="notoSans"] body {
+    --font-sans: var(--font-noto-sans);
+  }
+  html[data-font="nunitoSans"] body {
+    --font-sans: var(--font-nunito-sans);
+  }
+  html[data-font="figtree"] body {
+    --font-sans: var(--font-figtree);
+  }
+  html[data-font="roboto"] body {
+    --font-sans: var(--font-roboto);
+  }
+  html[data-font="geist"] body {
+    --font-sans: var(--font-geist);
+  }
+  html[data-font="raleway"] body {
+    --font-sans: var(--font-raleway);
+  }
+  html[data-font="dmSans"] body {
+    --font-sans: var(--font-dm-sans);
+  }
+  html[data-font="publicSans"] body {
+    --font-sans: var(--font-public-sans);
+  }
+  html[data-font="outfit"] body {
+    --font-sans: var(--font-outfit);
+  }
+  html[data-font="geistMono"] body {
+    --font-sans: var(--font-geist-mono);
+  }
+  html[data-font="geistPixelSquare"] body {
+    --font-sans: var(--font-geist-pixel-square);
+  }
+  html[data-font="jetBrainsMono"] body {
+    --font-sans: var(--font-jetbrains-mono);
+  }
+  html[data-font="notoSerif"] body {
+    --font-sans: var(--font-noto-serif);
+  }
+  html[data-font="robotoSlab"] body {
+    --font-sans: var(--font-roboto-slab);
+  }
+  html[data-font="merriweather"] body {
+    --font-sans: var(--font-merriweather);
+  }
+  html[data-font="lora"] body {
+    --font-sans: var(--font-lora);
+  }
+  html[data-font="playfairDisplay"] body {
+    --font-sans: var(--font-playfair-display);
+  }
+}
+
+html {
+  overscroll-behavior: none;
+}
+
+/* Form utility styles */
+.form-input,
+.form-textarea,
+.form-multiselect,
+.form-select,
+.form-checkbox,
+.form-radio {
+  @apply border border-gray-300 bg-white/80 focus:border-emerald-400 focus:ring-0 focus:ring-offset-0;
+}
+
+.form-input,
+.form-textarea,
+.form-multiselect,
+.form-select {
+  @apply rounded-lg px-4 py-2.5 text-sm text-gray-800;
+}
+
+.form-input,
+.form-textarea {
+  @apply placeholder-transparent focus:placeholder-gray-400;
+}
+
+/* Sidebar custom theme styling matching landing page */
+/* Éclairci (2026-09-11, demande explicite) — opacités réduites, même
+   dégradé/teintes, juste plus pâle. */
+[data-sidebar="menu-button"][data-active="true"] {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(52, 211, 153, 0.05) 100%) !important;
+  color: #047857 !important;
+  font-weight: 600 !important;
+}
+
+.dark [data-sidebar="menu-button"][data-active="true"] {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.14) 0%, rgba(52, 211, 153, 0.08) 100%) !important;
+  color: #34d399 !important;
+}
+
+/* Bouton "Repeat"/retry (Uiverse.io by andrew-demchenk0) — sens de rotation
+   inverse au sens horaire par défaut de Tailwind, d'où ce keyframe dédié. */
+@keyframes spin-reverse {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+/* Champ de formes flottantes (section "Comment ça marche", carrousel 3D) —
+   4 trajectoires de dérive distinctes (translation + légère rotation, durée
+   et amplitude différentes) pour que les formes ne bougent jamais toutes en
+   phase. Classes .animate-driftN utilisées directement dans le composant,
+   jamais définies dans le template original fourni (qui suppose un fichier
+   CSS externe absent du HTML collé) — reconstituées ici pour reproduire le
+   même effet visuel. */
+@keyframes drift1 {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate(18px, -22px) rotate(6deg);
+  }
+}
+@keyframes drift2 {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate(-16px, 20px) rotate(-5deg);
+  }
+}
+@keyframes drift3 {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate(14px, 16px) rotate(4deg);
+  }
+}
+@keyframes drift4 {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate(-20px, -14px) rotate(-6deg);
+  }
+}
+.animate-drift1 {
+  animation: drift1 9s ease-in-out infinite;
+}
+.animate-drift2 {
+  animation: drift2 11s ease-in-out infinite;
+}
+.animate-drift3 {
+  animation: drift3 8s ease-in-out infinite;
+}
+.animate-drift4 {
+  animation: drift4 10s ease-in-out infinite;
+}
+
+/* Aurora theme mode (Landing page background mode) */
+@keyframes aurora {
+  from {
+    background-position:
+      50% 50%,
+      50% 50%;
+  }
+  to {
+    background-position:
+      350% 50%,
+      350% 50%;
+  }
+}
+
+html[data-theme-mode="aurora"] [data-slot="sidebar-inset"] {
+  background-color: #fafafa;
+  position: relative;
+}
+
+html[data-theme-mode="aurora"] [data-slot="sidebar-inset"]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.5;
+  filter: blur(10px) invert(1);
+  background-image:
+    repeating-linear-gradient(100deg, #fff 0%, #fff 7%, transparent 10%, transparent 12%, #fff 16%),
+    repeating-linear-gradient(100deg, #ffffff 10%, #10b981 15%, #ffffff 20%, #059669 25%, #ffffff 30%);
+  background-size: 300% 200%;
+  background-position: 50% 50%;
+  animation: aurora 60s linear infinite;
+  mask-image: radial-gradient(ellipse at 100% 0%, black 10%, transparent 70%);
+}
+
+.disable-transitions * {
+  transition: none !important;
+}
+
+[data-print-root] {
+  display: none;
+}
+
+@media print {
+  @page {
+    size: Letter;
+    margin: 0;
+  }
+
+  html,
+  body {
+    width: 8.5in !important;
+    height: 11in !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+  }
+
+  body > *:not([data-print-root]) {
+    display: none !important;
+  }
+
+  [data-print-root] {
+    display: block !important;
+    width: 8.5in !important;
+    height: 11in !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    background: white !important;
+  }
+
+  [data-print-root] [data-print-paper] {
+    width: 8.5in !important;
+    height: 11in !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+  }
+
+  [data-print-root] [data-print-paper],
+  [data-print-root] [data-print-paper] * {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+}

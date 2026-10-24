@@ -1,0 +1,26 @@
+BARÈME (10 points)
+
+-   : 2 points
+-   (schéma de la barre, section) : 1 point
+-   (calcul des efforts par nœuds, puis vérification des contraintes) : 1.5 points
+-   : 2 points
+-   : 0.5 point
+-   (P = 28 kN) : 2 points
+-   : 1 point
+\sin \alpha = \frac{a}{a\sqrt{5}} = \frac{1}{2\sqrt{5}}
+\cos \alpha = \frac{2a}{a\sqrt{5}} = \frac{2}{\sqrt{5}}
+Observar cómo son las cargas y la estructura.
+Al ser una cercha con cargas cuya resultante cae sobre el apoyo fijo, toda la carga se la lleva este apoyo y el otro nada. Por tanto, las barras del apoyo móvil (3 y 4) no tendrán ningún esfuerzo.
+El resto de estructura es simétrica, por lo que las barras 5 y 7, así como 1 y 2, tendrán el mismo valor.
+Por último, la barra 6 soporta la
+Para finalizar, haríamos uso de la tensión admisible del material para calcular "P" ya que conocemos el axil que va en función de esta variable.
+Apoyo fijo se lleva toda la carga
+Axil en 6 igual a la carga P
+Con el axil más desfavorable se calcula "P" sabiendo que la tensión es igual a la fuerza entre el área e igualándolo a la σ_adm del material
+5° SOLUCIÓN:
+\sigma_{max} = 275 MPa
+\sigma_{max} = \sigma = \frac{N}{A} \cdot \omega
+\sigma_1 = \frac{6P \cdot 10^3}{\pi \cdot 30^2}{4} \cdot 1,1
+\sigma_5 = \frac{3P\sqrt{5} \cdot 10^3}{\frac{\pi \cdot 30^2}{4}}
+Finalmente, el esfuerzo que limita la carga "P" es el de la barra 5
+Si, ya que nos hemos quitado el mayor numero de incógnitas razonando el comportamiento de la cercha ante la distribución de las cargas.

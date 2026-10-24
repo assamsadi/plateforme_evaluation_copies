@@ -1,0 +1,22 @@
+FROM python:3.14-slim
+
+WORKDIR /app
+
+# libgl1/libglib2.0-0 : requis à l'import par opencv-python (cv2) — même
+# besoin que Dockerfile.worker (arbre d'imports partagé, ex. exercise_service
+# -> exercise_tasks -> pipeline_graph -> ... -> cv2).
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends libgl1 libglib2.0-0 \
+    && rm -rf /var/lib/apt/lists/*
+
+# Couche torch CPU-only séparée — même raison que Dockerfile.worker (évite
+# le build CUDA par défaut, couche indépendante de requirements.txt).
+RUN pip install --no-cache-dir torch==2.13.0 --index-url https://download.pytorch.org/whl/cpu
+
+COPY requirements.txt .
+RUN grep -v '^torch==' requirements.txt > requirements.nocuda.txt \
+    && pip install --no-cache-dir -r requirements.nocuda.txt
+
+COPY app ./app
+
+CMD ["python", "-m", "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]

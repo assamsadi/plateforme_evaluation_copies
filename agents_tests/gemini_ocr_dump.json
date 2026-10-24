@@ -1,0 +1,3067 @@
+{
+  "model": "gemini-flash-lite-latest",
+  "pages": [
+    {
+      "page_num": 1,
+      "blocks": [
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "BARÈME (10 points)\n\n- Identification correcte des données du problème et de ce qui est demandé : 2 points\n- Représentation graphique du problème (schéma de la barre, section) : 1 point\n- Décomposition en sous-tâches (calcul des efforts par nœuds, puis vérification des contraintes) : 1.5 points\n- Description claire de la démarche de résolution, en mots et en schéma : 2 points\n- Identification d'un contexte de réutilisation de la méthode : 0.5 point\n- Résultat final correct et clairement présenté (P = 28 kN) : 2 points\n- Vérification de la cohérence du résultat et de la pertinence de la méthode : 1 point",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 120,
+            "y": 88,
+            "width": 782,
+            "height": 257
+          },
+          "student_label": null,
+          "model_self_confidence": 1.0,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        }
+      ],
+      "error": null
+    },
+    {
+      "page_num": 2,
+      "blocks": [
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "PROBLEMA 1: ESTRATEGIA CHAABI",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 139,
+            "y": 25,
+            "width": 723,
+            "height": 55
+          },
+          "student_label": null,
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Dada la cercha de la figura, calcular el valor máximo P (en kN sin decimales) que puede soportar para que no falle ninguna de sus barras de sección redonda maciza, de diámetro 30 mm. El valor de \"a\", debe ser tal que la esbeltez de la barra 3 tenga un valor de 33.",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 20,
+            "y": 136,
+            "width": 978,
+            "height": 387
+          },
+          "student_label": null,
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "1° REFORMULAR LA TAREA:",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 476,
+            "y": 339,
+            "width": 322,
+            "height": 26
+          },
+          "student_label": "1°",
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "1.1- Escribe toda la información que aparece en el enunciado del ejercicio:",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 476,
+            "y": 405,
+            "width": 519,
+            "height": 48
+          },
+          "student_label": "1.1-",
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "STRUCTURE",
+          "structure_type": "MULTI_COLUMN_LIST",
+          "raw_text": "• Figura de la cercha a estudiar con sus cargas\n• Diámetro de la sección de las barras de la cercha\n• Esbeltez de la barra 3",
+          "structured_content": {
+            "columns": [
+              "• Figura de la cercha a estudiar con sus cargas\n• Diámetro de la sección de las barras de la cercha\n• Esbeltez de la barra 3"
+            ]
+          },
+          "bounding_box": {
+            "x": 551,
+            "y": 537,
+            "width": 418,
+            "height": 130
+          },
+          "student_label": null,
+          "model_self_confidence": 0.98,
+          "reconstruction_confidence": 0.95,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "DIAGRAM",
+          "structure_type": null,
+          "raw_text": "Diagrama de cercha con cargas 3P, P, 3P y dimensiones a, 2a, barras numeradas de 1 a 7",
+          "structured_content": {
+            "description": "Esquema de una cercha estructural con apoyos, numeración de barras y fuerzas aplicadas."
+          },
+          "bounding_box": {
+            "x": 10,
+            "y": 361,
+            "width": 512,
+            "height": 454
+          },
+          "student_label": null,
+          "model_self_confidence": 0.95,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Profesora: Milagros Huerta Gómez de Merodio",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 4,
+            "y": 969,
+            "width": 329,
+            "height": 19
+          },
+          "student_label": null,
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Mecánica de los Medios Continuos y Teoría de Estructuras / Universidad de",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 435,
+            "y": 969,
+            "width": 561,
+            "height": 16
+          },
+          "student_label": null,
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        }
+      ],
+      "error": null
+    },
+    {
+      "page_num": 3,
+      "blocks": [
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "PROBLEMA 1: ESTRATEGIA CHAABI",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 139,
+            "y": 25,
+            "width": 822,
+            "height": 77
+          },
+          "student_label": null,
+          "model_self_confidence": 1.0,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Dada la cercha de la figura, calcular el valor máximo P (en kN sin decimales) que puede soportar para que no falle ninguna de sus barras de sección redonda maciza, de diámetro 30 mm. El valor de \"a\", debe ser tal que la esbeltez de la barra 3 tenga un valor de 33.",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 20,
+            "y": 142,
+            "width": 990,
+            "height": 387
+          },
+          "student_label": null,
+          "model_self_confidence": 0.98,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "1° REFORMULAR LA TAREA:",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 476,
+            "y": 339,
+            "width": 822,
+            "height": 38
+          },
+          "student_label": "1°",
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "1.2- Analiza la pregunta: ¿qué se te pregunta en el ejercicio?",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 476,
+            "y": 409,
+            "width": 509,
+            "height": 37
+          },
+          "student_label": "1.2",
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "• El valor máximo de \"P\" que puede soportar la cercha.",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 534,
+            "y": 539,
+            "width": 989,
+            "height": 62
+          },
+          "student_label": null,
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "DIAGRAM",
+          "structure_type": null,
+          "raw_text": "Esquema de la cercha con cotas y cargas",
+          "structured_content": {
+            "description": "Esquema de la cercha estructural con barras numeradas de 1 a 7, apoyos, y cargas 3P y P."
+          },
+          "bounding_box": {
+            "x": 16,
+            "y": 372,
+            "width": 538,
+            "height": 454
+          },
+          "student_label": null,
+          "model_self_confidence": 0.95,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Profesora: Milagros Huerta Gómez de Merodio",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 3,
+            "y": 969,
+            "width": 329,
+            "height": 18
+          },
+          "student_label": null,
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Mecánica de los Medios Continuos y Teoría de Estructuras / Universidad de",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 435,
+            "y": 969,
+            "width": 974,
+            "height": 18
+          },
+          "student_label": null,
+          "model_self_confidence": 0.98,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        }
+      ],
+      "error": null
+    },
+    {
+      "page_num": 4,
+      "blocks": [
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "PROBLEMA 1: ESTRATEGIA CHAABI",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 139,
+            "y": 25,
+            "width": 861,
+            "height": 55
+          },
+          "student_label": null,
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Dada la cercha de la figura, calcular el valor máximo P (en kN sin decimales) que puede soportar para que no falle ninguna de sus barras de sección redonda maciza, de diámetro 30 mm. El valor de \"a\", debe ser tal que la esbeltez de la barra 3 tenga un valor de 33.",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 20,
+            "y": 142,
+            "width": 980,
+            "height": 194
+          },
+          "student_label": null,
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "1° REFORMULAR LA TAREA:",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 479,
+            "y": 341,
+            "width": 325,
+            "height": 38
+          },
+          "student_label": "1°",
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "1.3- A partir de la información presentada en el ejercicio, ¿cuál es la información importante y necesaria para responder a la pregunta?",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 478,
+            "y": 405,
+            "width": 981,
+            "height": 79
+          },
+          "student_label": "1.3-",
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "DIAGRAM",
+          "structure_type": null,
+          "raw_text": "Diagrama de la cercha con cotas y cargas",
+          "structured_content": {
+            "description": "Schéma structurel d'une cerche avec numérotation des barres de 1 à 7, appuis et charges 3P, P, 3P."
+          },
+          "bounding_box": {
+            "x": 10,
+            "y": 369,
+            "width": 535,
+            "height": 454
+          },
+          "student_label": null,
+          "model_self_confidence": 0.95,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "• Las dimensiones de la cercha\n• Los valores de los axiles",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 577,
+            "y": 593,
+            "width": 304,
+            "height": 61
+          },
+          "student_label": null,
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Profesora: Milagros Huerta Gómez de Merodio",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 4,
+            "y": 970,
+            "width": 329,
+            "height": 18
+          },
+          "student_label": null,
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Mecánica de los Medios Continuos y Teoría de Estructuras / Universidad de",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 435,
+            "y": 970,
+            "width": 564,
+            "height": 18
+          },
+          "student_label": null,
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        }
+      ],
+      "error": null
+    },
+    {
+      "page_num": 5,
+      "blocks": [
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "PROBLEMA 1: ESTRATEGIA CHAABI",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 860,
+            "y": 79
+          },
+          "student_label": null,
+          "model_self_confidence": 1.0,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Dada la cercha de la figura, calcular el valor máximo P (en kN sin decimales) que puede soportar para que no falle ninguna de sus barras de sección redonda maciza, de diámetro 30 mm. El valor de \"a\", debe ser tal que la esbeltez de la barra 3 tenga un valor de 33.",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 20,
+            "y": 389,
+            "xmax": 984
+          },
+          "student_label": null,
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "1° REFORMULAR LA TAREA:",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 476,
+            "ymin": 341,
+            "xmax": 822,
+            "ymax": 371
+          },
+          "student_label": "1°",
+          "model_self_confidence": 0.98,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "1.4- ¿Cuál sería una representación del problema? Muestra los datos importantes y la incógnita en tu representación.",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 476,
+            "y": 403,
+            "xmax": 951,
+            "ymax": 521
+          },
+          "student_label": "1.4-",
+          "model_self_confidence": 0.98,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "DIAGRAM",
+          "structure_type": null,
+          "raw_text": "Diagram of truss structure with loads and dimensions",
+          "structured_content": {
+            "description": "Truss structure with labeled bars (1-7), nodal forces (3P, P), and dimensions (a, 2a)."
+          },
+          "bounding_box": {
+            "x": "17, ",
+            "y": 369,
+            "xmax": 533,
+            "ymax": 827
+          },
+          "student_label": null,
+          "model_self_confidence": 0.95,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "DIAGRAM",
+          "structure_type": null,
+          "raw_text": "Circular cross section diameter 30 mm",
+          "structured_content": {
+            "description": "Circular cross section with diameter dimension 30 mm and arrows indicating forces."
+          },
+          "bounding_box": {
+            "x": "583, 532, 737, 706}, "
+          },
+          "student_label": null,
+          "model_self_confidence": 0.95,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Profesora: Milagros Huerta Gómez de Merodio",
+          "structured_content": null,
+          "bounding_box": {
+            "x": "3, ",
+            "y": 970,
+            "xmax": 331
+          },
+          "student_label": null,
+          "model_self_confidence": 1.0,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Mecánica de los Medios Continuos y Teoría de Estructuras / Universidad de",
+          "structured_content": null,
+          "bounding_box": {
+            "x": "436, ",
+            " ": "997",
+            "width": "563",
+            "height": "16"
+          },
+          "student_label": null,
+          "model_self_confidence": 0.98,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        }
+      ],
+      "error": null
+    },
+    {
+      "page_num": 6,
+      "blocks": [
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "PROBLEMA 1: ESTRATEGIA CHAABI",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 139,
+            "y": 27,
+            "width": 718,
+            "height": 55
+          },
+          "student_label": null,
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Dada la cercha de la figura, calcular el valor máximo P (en kN sin decimales) que puede soportar para que no falle ninguna de sus barras de sección redonda maciza, de diámetro 30 mm. El valor de \"a\", debe ser tal que la esbeltez de la barra 3 tenga un valor de 33.",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 20,
+            "y": 140,
+            "width": 974,
+            "height": 387
+          },
+          "student_label": null,
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "2° SUBTAREAS:",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 477,
+            "y": 341,
+            "width": 178,
+            "height": 38
+          },
+          "student_label": null,
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "2.1- ¿Necesitas datos adicionales que no se le hayan facilitado?",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 477,
+            "y": 403,
+            "width": 502,
+            "height": 77
+          },
+          "student_label": "2.1",
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "• Valor de la σadm\n• Tablas de pandeo\n• Esbeltez de las barras con distinta longitud de la 3\n• Longitud de las barras 5 y 7",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 559,
+            "y": 505,
+            "width": 435,
+            "height": 182
+          },
+          "student_label": null,
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Con las relaciones trigonométricas",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 560,
+            "y": 707,
+            "width": 773,
+            "height": 31
+          },
+          "student_label": null,
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "EQUATION",
+          "structure_type": null,
+          "raw_text": "\\sin \\alpha = \\frac{a}{a\\sqrt{5}} = \\frac{1}{2\\sqrt{5}}",
+          "structured_content": {
+            "latex": "\\sin \\alpha = \\frac{a}{a\\sqrt{5}} = \\frac{1}{2\\sqrt{5}}"
+          },
+          "bounding_box": {
+            "x": 818,
+            "y": 737,
+            "width": 178,
+            "height": 84
+          },
+          "student_label": null,
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": 0.99,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "EQUATION",
+          "structure_type": null,
+          "raw_text": "\\cos \\alpha = \\frac{2a}{a\\sqrt{5}} = \\frac{2}{\\sqrt{5}}",
+          "structured_content": {
+            "latex": "\\cos \\alpha = \\frac{2a}{a\\sqrt{5}} = \\frac{2}{\\sqrt{5}}"
+          },
+          "bounding_box": {
+            "x": 820,
+            "y": 824,
+            "width": 177,
+            "height": 91
+          },
+          "student_label": null,
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": 0.99,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "DIAGRAM",
+          "structure_type": null,
+          "raw_text": "Trigonometry triangle with sides 2a, a, a*sqrt(5) and angle alpha",
+          "structured_content": {
+            "description": "A right triangle showing angle alpha, adjacent side 2a, opposite side a, and hypotenuse a*sqrt(5)"
+          },
+          "bounding_box": {
+            "x": 593,
+            "y": 689,
+            "width": 215,
+            "height": 249
+          },
+          "student_label": null,
+          "model_self_confidence": 0.95,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Profesora: Milagros Huerta Gómez de Merodio",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 3,
+            "y": 969,
+            "width": 331,
+            "height": 18
+          },
+          "student_label": null,
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Mecánica de los Medios Continuos y Teoría de Estructuras / Universidad de",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 435,
+            "y": 969,
+            "width": 560,
+            "height": 18
+          },
+          "student_label": null,
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        }
+      ],
+      "error": null
+    },
+    {
+      "page_num": 7,
+      "blocks": [
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "PROBLEMA 1: ESTRATEGIA CHAABI",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 139,
+            "y": 26,
+            "width": 860,
+            "height": 55
+          },
+          "student_label": null,
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Dada la cercha de la figura, calcular el valor máximo P (en kN sin decimales) que puede soportar para que no falle ninguna de sus barras de sección redonda maciza, de diámetro 30 mm. El valor de \"a\", debe ser tal que la esbeltez de la barra 3 tenga un valor de 33.",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 20,
+            "y": 138,
+            "width": 978,
+            "height": 389
+          },
+          "student_label": null,
+          "model_self_confidence": 0.98,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "2° SUBTAREAS:",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 477,
+            "y": 339,
+            "width": 269,
+            "height": 34
+          },
+          "student_label": null,
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "2.2- ¿Se puede dividir la tarea en varias mini tareas?",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 477,
+            "y": 403,
+            "width": 894,
+            "height": 32
+          },
+          "student_label": "2.2-",
+          "model_self_confidence": 0.98,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "• Calcular los esfuerzos por nudos\n• Calcular las tensiones de las barras",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 560,
+            "y": 458,
+            "width": 435,
+            "height": 113
+          },
+          "student_label": null,
+          "model_self_confidence": 0.97,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "DIAGRAM",
+          "structure_type": null,
+          "raw_text": "Cercha estructural con cotas y cargas aplicadas",
+          "structured_content": {
+            "description": "Truss diagram with labels 1 to 7 for bars, loads 3P, P, 3P, and dimensions a, 2a, 2a."
+          },
+          "bounding_box": {
+            "x": 16,
+            "y": 372,
+            "width": 535,
+            "height": 444
+          },
+          "student_label": null,
+          "model_self_confidence": 0.95,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Profesora: Milagros Huerta Gómez de Merodio",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 4,
+            "y": 969,
+            "width": 331,
+            "height": 17
+          },
+          "student_label": null,
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Mecánica de los Medios Continuos y Teoría de Estructuras / Universidad de",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 436,
+            "y": 969,
+            "width": 997,
+            "height": 17
+          },
+          "student_label": null,
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        }
+      ],
+      "error": null
+    },
+    {
+      "page_num": 8,
+      "blocks": [
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "PROBLEMA 1: ESTRATEGIA CHAABI",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 139,
+            "y": 25,
+            "width": 732,
+            "height": 55
+          },
+          "student_label": null,
+          "model_self_confidence": 1.0,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Dada la cercha de la figura, calcular el valor máximo P (en kN sin decimales) que puede soportar para que no falle ninguna de sus barras de sección redonda maciza, de diámetro 30 mm. El valor de \"a\", debe ser tal que la esbeltez de la barra 3 tenga un valor de 33.",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 20,
+            "y": 142,
+            "width": 966,
+            "height": 387
+          },
+          "student_label": null,
+          "model_self_confidence": 0.98,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "3° RESOLVER SUBTAREAS:",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 478,
+            "y": 341,
+            "width": 313,
+            "height": 37
+          },
+          "student_label": null,
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "3.1- Utiliza tus palabras para describir los pasos que darás para resolver el problema:",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 478,
+            "y": 408,
+            "width": 966,
+            "height": 48
+          },
+          "student_label": null,
+          "model_self_confidence": 0.98,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "DIAGRAM",
+          "structure_type": null,
+          "raw_text": "[Esquema de cercha estructural con cargas y cotas]",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 19,
+            "y": 378,
+            "width": 530,
+            "height": 482
+          },
+          "student_label": null,
+          "model_self_confidence": 0.9,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Observar cómo son las cargas y la estructura.\nAl ser una cercha con cargas cuya resultante cae sobre el apoyo fijo, toda la carga se la lleva este apoyo y el otro nada. Por tanto, las barras del apoyo móvil (3 y 4) no tendrán ningún esfuerzo.\nEl resto de estructura es simétrica, por lo que las barras 5 y 7, así como 1 y 2, tendrán el mismo valor.\nPor último, la barra 6 soporta la",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 539,
+            "y": 510,
+            "width": 428,
+            "height": 472
+          },
+          "student_label": null,
+          "model_self_confidence": 0.95,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Profesora: Milagros Huerta Gómez de Merodio",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 4,
+            "y": 968,
+            "width": 329,
+            "height": 19
+          },
+          "student_label": null,
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Mecánica de los Medios Continuos y Teoría de Estructuras / Universidad de",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 435,
+            "y": 968,
+            "width": 562,
+            "height": 19
+          },
+          "student_label": null,
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        }
+      ],
+      "error": null
+    },
+    {
+      "page_num": 9,
+      "blocks": [
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "PROBLEMA 1: ESTRATEGIA CHAABI",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 139,
+            "y": 25,
+            "width": 761,
+            "height": 55
+          },
+          "student_label": null,
+          "model_self_confidence": 1.0,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Dada la cercha de la figura, calcular el valor máximo P (en kN sin decimales) que puede soportar para que no falle ninguna de sus barras de sección redonda maciza, de diámetro 30 mm. El valor de \"a\", debe ser tal que la esbeltez de la barra 3 tenga un valor de 33.",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 20,
+            "y": 137,
+            "width": 978,
+            "height": 264
+          },
+          "student_label": null,
+          "model_self_confidence": 0.98,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "3° RESOLVER SUBTAREAS:",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 478,
+            "y": 339,
+            "width": 388,
+            "height": 41
+          },
+          "student_label": null,
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "3.1- Utiliza tus palabras para describir los pasos que darás para resolver el problema:",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 478,
+            "y": 405,
+            "width": 971,
+            "height": 56
+          },
+          "student_label": "3.1",
+          "model_self_confidence": 0.98,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Para finalizar, haríamos uso de la tensión admisible del material para calcular \"P\" ya que conocemos el axil que va en función de esta variable.",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 540,
+            "y": 512,
+            "width": 974,
+            "height": 139
+          },
+          "student_label": null,
+          "model_self_confidence": 0.97,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "DIAGRAM",
+          "structure_type": null,
+          "raw_text": "Truss diagram with bars, nodes, forces and dimensions.",
+          "structured_content": {
+            "description": "Truss diagram labeled 1 to 7 with loads 3P, P, 3P and dimensions a, 2a."
+          },
+          "bounding_box": {
+            "x": 16,
+            "y": 372,
+            "width": 535,
+            "height": 454
+          },
+          "student_label": null,
+          "model_self_confidence": 0.95,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Profesora: Milagros Huerta Gómez de Merodio",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 4,
+            "y": 971,
+            "width": 329,
+            "height": 16
+          },
+          "student_label": null,
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Mecánica de los Medios Continuos y Teoría de Estructuras / Universidad de",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 435,
+            "y": 971,
+            "width": 958,
+            "height": 16
+          },
+          "student_label": null,
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        }
+      ],
+      "error": null
+    },
+    {
+      "page_num": 10,
+      "blocks": [
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "3° RESOLVER SUBTAREAS:",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 42,
+            "y": 55,
+            "width": 371,
+            "height": 38
+          },
+          "student_label": "3°",
+          "model_self_confidence": 1.0,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "3.2- Haz una representación para describir los pasos que darás para resolver el problema:",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 41,
+            "y": 115,
+            "width": 519,
+            "height": 97
+          },
+          "student_label": "3.2",
+          "model_self_confidence": 1.0,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "STRUCTURE",
+          "structure_type": "ANNOTATED_DIAGRAM",
+          "raw_text": "Observar cercha",
+          "structured_content": {
+            "elements": [
+              {
+                "id": "e1",
+                "type": "text",
+                "content": "Observar cercha",
+                "origin": "PRINTED",
+                "is_struck_through": false
+              },
+              {
+                "id": "e2",
+                "type": "shape",
+                "content": "truss diagram",
+                "origin": "PRINTED",
+                "is_struck_through": false
+              }
+            ],
+            "relations": []
+          },
+          "bounding_box": {
+            "x": 86,
+            "y": 236,
+            "width": 432,
+            "height": 379
+          },
+          "student_label": null,
+          "model_self_confidence": 0.95,
+          "reconstruction_confidence": 0.9,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "STRUCTURE",
+          "structure_type": "ANNOTATED_DIAGRAM",
+          "raw_text": "¿Carga simétrica?",
+          "structured_content": {
+            "elements": [
+              {
+                "id": "e1",
+                "type": "text",
+                "content": "¿Carga simétrica?",
+                "origin": "PRINTED",
+                "is_struck_through": false
+              }
+            ],
+            "relations": []
+          },
+          "bounding_box": {
+            "x": 408,
+            "y": 149,
+            "width": 242,
+            "height": 185
+          },
+          "student_label": null,
+          "model_self_confidence": 0.95,
+          "reconstruction_confidence": 0.9,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Apoyo fijo se lleva toda la carga",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 692,
+            "y": 178,
+            "width": 182,
+            "height": 125
+          },
+          "student_label": null,
+          "model_self_confidence": 0.98,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Apoyo móvil sin reacción",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 863,
+            "y": 179,
+            "width": 169,
+            "height": 102
+          },
+          "student_label": null,
+          "model_self_confidence": 0.98,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Axil en 3 y 4 igual a 0",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 883,
+            "y": 400,
+            "width": 163,
+            "height": 144
+          },
+          "student_label": null,
+          "model_self_confidence": 0.98,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Cercha simétrica",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 787,
+            "y": 613,
+            "width": 105,
+            "height": 67
+          },
+          "student_label": null,
+          "model_self_confidence": 0.98,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Axil en 5 y 7 y en 1 y 2 iguales",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 740,
+            "y": 724,
+            "width": 118,
+            "height": 115
+          },
+          "student_label": null,
+          "model_self_confidence": 0.98,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Axil en 6 igual a la carga P",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 853,
+            "y": 724,
+            "width": 133,
+            "height": 87
+          },
+          "student_label": null,
+          "model_self_confidence": 0.98,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Con el axil más desfavorable se calcula \"P\" sabiendo que la tensión es igual a la fuerza entre el área e igualándolo a la σ_adm del material",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 498,
+            "y": 420,
+            "width": 729,
+            "height": 725
+          },
+          "student_label": null,
+          "model_self_confidence": 0.97,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "STRUCTURE",
+          "structure_type": "ANNOTATED_DIAGRAM",
+          "raw_text": "¿Valor de \"a\" influye en algo?",
+          "structured_content": {
+            "elements": [
+              {
+                "id": "e1",
+                "type": "text",
+                "content": "¿Valor de \"a\" influye en algo?",
+                "origin": "PRINTED",
+                "is_struck_through": false
+              }
+            ],
+            "relations": []
+          },
+          "bounding_box": {
+            "x": 33,
+            "y": 709,
+            "width": 182,
+            "height": 185
+          },
+          "student_label": null,
+          "model_self_confidence": 0.95,
+          "reconstruction_confidence": 0.9,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Todas las medidas están en función de esta por lo que no",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 220,
+            "y": 754,
+            "width": 190,
+            "height": 141
+          },
+          "student_label": null,
+          "model_self_confidence": 0.98,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Si la barra mas desfavorable esta a compresión habrá que comprobar por pandeo y harían falta las tablas",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 423,
+            "y": 791,
+            "width": 286,
+            "height": 178
+          },
+          "student_label": null,
+          "model_self_confidence": 0.95,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Profesora: Milagros Huerta Gómez de Merodio",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 3,
+            "y": 968,
+            "width": 329,
+            "height": 17
+          },
+          "student_label": null,
+          "model_self_confidence": 0.98,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Mecánica de los Medios Continuos y Teoría de Estructuras / Universidad de",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 435,
+            "y": 969,
+            "width": 591,
+            "height": 17
+          },
+          "student_label": null,
+          "model_self_confidence": 0.98,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        }
+      ],
+      "error": null
+    },
+    {
+      "page_num": 11,
+      "blocks": [
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "PROBLEMA 1: ESTRATEGIA CHAABI",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 139,
+            "y": 25,
+            "width": 861,
+            "height": 55
+          },
+          "student_label": null,
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Dada la cercha de la figura, calcular el valor máximo P (en kN sin decimales) que puede soportar para que no falle ninguna de sus barras de sección redonda maciza, de diámetro 30 mm. El valor de “a”, debe ser tal que la esbeltez de la barra 3 tenga un valor de 33.",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 20,
+            "y": 142,
+            "width": 972,
+            "height": 389
+          },
+          "student_label": null,
+          "model_self_confidence": 0.98,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "DIAGRAM",
+          "structure_type": null,
+          "raw_text": "[Diagram of a truss structure with labels 1 to 7, loads 3P, P, 3P, and dimensions]",
+          "structured_content": {
+            "description": "Truss structure diagram"
+          },
+          "bounding_box": {
+            "x": 17,
+            "y": 366,
+            "width": 487,
+            "height": 431
+          },
+          "student_label": null,
+          "model_self_confidence": 0.95,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "4° DONDE SE PODRÍA USAR LA SOLUCIÓN:",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 480,
+            "y": 340,
+            "width": 435,
+            "height": 41
+          },
+          "student_label": "4°",
+          "model_self_confidence": 0.98,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "¿Qué otro tipo de problema podrías resolver con la solución que has dado en las preguntas 3.1 y 3.2? - Piensa en otra situación/contexto ... ¿Quizá podrías modificarlo un poco?",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 500,
+            "y": 403,
+            "width": 948,
+            "height": 564
+          },
+          "student_label": "4",
+          "model_self_confidence": 0.97,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Cualquier problema que involucre una cercha ya sea para calculo de esfuerzos en las barras como para cálculos de esbeltez, diámetro mínimo, etc... \nSi la carga es simétrica y las barras también, se pueden usar los mismos pasos que antes.",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 539,
+            "y": 589,
+            "width": 993,
+            "height": 901
+          },
+          "student_label": null,
+          "model_self_confidence": 0.95,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Profesora: Milagros Huerta Gómez de Merodio",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 4,
+            "y": 970,
+            "width": 329,
+            "height": 18
+          },
+          "student_label": null,
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Mecánica de los Medios Continuos y Teoría de Estructuras / Universidad de",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 435,
+            "y": 970,
+            "width": 986,
+            "height": 18
+          },
+          "student_label": null,
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        }
+      ],
+      "error": null
+    },
+    {
+      "page_num": 12,
+      "blocks": [
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "PROBLEMA 1: ESTRATEGIA CHAABI",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 139,
+            "y": 28,
+            "width": 861,
+            "height": 50
+          },
+          "student_label": null,
+          "model_self_confidence": 1.0,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Dada la cercha de la figura, calcular el valor máximo P (en kN sin decimales) que puede soportar para que no falle ninguna de sus barras de sección redonda maciza, de diámetro 30 mm. El valor de \"a\", debe ser tal que la esbeltez de la barra 3 tenga un valor de 33.",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 20,
+            "y": 142,
+            "width": 980,
+            "height": 387
+          },
+          "student_label": null,
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "5° SOLUCIÓN:",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 478,
+            "y": 339,
+            "width": 158,
+            "height": 35
+          },
+          "student_label": null,
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "5- Es hora de responder a la pregunta del problema: escribe la solución que presentarás a tu profesor:",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 476,
+            "y": 408,
+            "width": 997,
+            "height": 49
+          },
+          "student_label": null,
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "EQUATION",
+          "structure_type": null,
+          "raw_text": "P = 28KN",
+          "structured_content": {
+            "latex": "P = 28\\text{ KN}"
+          },
+          "bounding_box": {
+            "x": 710,
+            "y": 632,
+            "width": 93,
+            "height": 41
+          },
+          "student_label": null,
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": 0.99,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "DIAGRAM",
+          "structure_type": null,
+          "raw_text": "Cercha estructural con fuerzas y cotas",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 15,
+            "y": 372,
+            "width": 550,
+            "height": 435
+          },
+          "student_label": null,
+          "model_self_confidence": 0.98,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Profesora: Milagros Huerta Gómez de Merodio",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 5,
+            "y": 968,
+            "width": 329,
+            "height": 18
+          },
+          "student_label": null,
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Mecánica de los Medios Continuos y Teoría de Estructuras / Universidad de",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 436,
+            "y": 968,
+            "width": 978,
+            "height": 18
+          },
+          "student_label": null,
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        }
+      ],
+      "error": null
+    },
+    {
+      "page_num": 13,
+      "blocks": [
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "PROBLEMA 1: ESTRATEGIA CHAABI",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 139,
+            "y": 25,
+            "width": 724,
+            "height": 79
+          },
+          "student_label": null,
+          "model_self_confidence": 1.0,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Acero S275",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 51,
+            "y": 154,
+            "width": 182,
+            "height": 38
+          },
+          "student_label": null,
+          "model_self_confidence": 1.0,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "EQUATION",
+          "structure_type": null,
+          "raw_text": "\\sigma_{max} = 275 MPa",
+          "structured_content": {
+            "latex": "\\sigma_{max} = 275\\text{ MPa}"
+          },
+          "bounding_box": {
+            "x": 192,
+            "y": 149,
+            "width": 344,
+            "height": 41
+          },
+          "student_label": null,
+          "model_self_confidence": 1.0,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Comprobación a compresión",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 42,
+            "y": 254,
+            "width": 204,
+            "height": 116
+          },
+          "student_label": null,
+          "model_self_confidence": 1.0,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "EQUATION",
+          "structure_type": null,
+          "raw_text": "\\sigma_{max} = \\sigma = \\frac{N}{A} \\cdot \\omega",
+          "structured_content": {
+            "latex": "\\sigma_{max} = \\sigma = \\frac{N}{A} \\cdot \\omega"
+          },
+          "bounding_box": {
+            "x": 42,
+            "y": 322,
+            "width": 298,
+            "height": 39
+          },
+          "student_label": null,
+          "model_self_confidence": 1.0,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "EQUATION",
+          "structure_type": null,
+          "raw_text": "\\sigma_1 = \\frac{6P \\cdot 10^3}{\\pi \\cdot 30^2}{4} \\cdot 1,1",
+          "structured_content": {
+            "latex": "\\sigma_1 = \\frac{6P \\cdot 10^3}{\\dfrac{\\pi \\cdot 30^2}{4}} \\cdot 1,1"
+          },
+          "bounding_box": {
+            "x": 231,
+            "y": 322,
+            "width": 361,
+            "height": 424
+          },
+          "student_label": null,
+          "model_self_confidence": 0.95,
+          "reconstruction_confidence": 0.95,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "EQUATION",
+          "structure_type": null,
+          "raw_text": "P = 29KN",
+          "structured_content": {
+            "latex": "P = 29\\text{ KN}"
+          },
+          "bounding_box": {
+            "x": 412,
+            "y": 343,
+            "width": 184,
+            "height": 35
+          },
+          "student_label": null,
+          "model_self_confidence": 1.0,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Comprobación a tracción",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 42,
+            "y": 472,
+            "width": 298,
+            "height": 36
+          },
+          "student_label": null,
+          "model_self_confidence": 1.0,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "EQUATION",
+          "structure_type": null,
+          "raw_text": "\\sigma_{max} = \\sigma = \\frac{N}{A}",
+          "structured_content": {
+            "latex": "\\sigma_{max} = \\sigma = \\frac{N}{A}"
+          },
+          "bounding_box": {
+            "x": 47,
+            "y": 556,
+            "width": 178,
+            "height": 63
+          },
+          "student_label": null,
+          "model_self_confidence": 1.0,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "EQUATION",
+          "structure_type": null,
+          "raw_text": "\\sigma_5 = \\frac{3P\\sqrt{5} \\cdot 10^3}{\\frac{\\pi \\cdot 30^2}{4}}",
+          "structured_content": {
+            "latex": "\\sigma_5 = \\frac{3P\\sqrt{5} \\cdot 10^3}{\\dfrac{\\pi \\cdot 30^2}{4}}"
+          },
+          "bounding_box": {
+            "x": 223,
+            "y": 556,
+            "width": 356,
+            "height": 67
+          },
+          "student_label": null,
+          "model_self_confidence": 1.0,
+          "reconstruction_confidence": 1.0,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "EQUATION",
+          "structure_type": null,
+          "raw_text": "P = 28KN",
+          "structured_content": {
+            "latex": "P = 28\\text{ KN}"
+          },
+          "bounding_box": {
+            "x": 404,
+            "y": 577,
+            "width": 196,
+            "height": 35
+          },
+          "student_label": null,
+          "model_self_confidence": 1.0,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Finalmente, el esfuerzo que limita la carga \"P\" es el de la barra 5",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 86,
+            "y": 748,
+            "width": 399,
+            "height": 86
+          },
+          "student_label": null,
+          "model_self_confidence": 1.0,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "STRUCTURE",
+          "structure_type": "TABLE",
+          "raw_text": "Valores de \\omega para Coeficiente de imperfección tipo c S275",
+          "structured_content": {
+            "rows": [
+              {
+                "cells": [
+                  "+",
+                  "0",
+                  "1",
+                  "2",
+                  "3",
+                  "4",
+                  "5",
+                  "6",
+                  "7",
+                  "8",
+                  "9"
+                ]
+              },
+              {
+                "cells": [
+                  "20",
+                  "1,02",
+                  "1,02",
+                  "1,03",
+                  "1,03",
+                  "1,04",
+                  "1,05",
+                  "1,05",
+                  "1,06",
+                  "1,07",
+                  "1,07"
+                ]
+              },
+              {
+                "cells": [
+                  "30",
+                  "1,08",
+                  "1,09",
+                  "1,09",
+                  "1,10",
+                  "1,11",
+                  "1,12",
+                  "1,12",
+                  "1,13",
+                  "1,14",
+                  "1,15"
+                ]
+              },
+              {
+                "cells": [
+                  "40",
+                  "1,16",
+                  "1,17",
+                  "1,17",
+                  "1,18",
+                  "1,19",
+                  "1,20",
+                  "1,21",
+                  "1,22",
+                  "1,23",
+                  "1,24"
+                ]
+              },
+              {
+                "cells": [
+                  "50",
+                  "1,25",
+                  "1,26",
+                  "1,27",
+                  "1,28",
+                  "1,29",
+                  "1,31",
+                  "1,32",
+                  "1,33",
+                  "1,34",
+                  "1,36"
+                ]
+              },
+              {
+                "cells": [
+                  "60",
+                  "1,37",
+                  "1,38",
+                  "1,40",
+                  "1,41",
+                  "1,43",
+                  "1,44",
+                  "1,46",
+                  "1,47",
+                  "1,49",
+                  "1,50"
+                ]
+              },
+              {
+                "cells": [
+                  "70",
+                  "1,52",
+                  "1,54",
+                  "1,55",
+                  "1,57",
+                  "1,59",
+                  "1,61",
+                  "1,63",
+                  "1,65",
+                  "1,66",
+                  "1,68"
+                ]
+              },
+              {
+                "cells": [
+                  "80",
+                  "1,70",
+                  "1,73",
+                  "1,75",
+                  "1,77",
+                  "1,79",
+                  "1,81",
+                  "1,83",
+                  "1,86",
+                  "1,88",
+                  "1,90"
+                ]
+              },
+              {
+                "cells": [
+                  "90",
+                  "1,93",
+                  "1,95",
+                  "1,98",
+                  "2,00",
+                  "2,03",
+                  "2,05",
+                  "2,08",
+                  "2,10",
+                  "2,13",
+                  "2,16"
+                ]
+              },
+              {
+                "cells": [
+                  "100",
+                  "2,19",
+                  "2,21",
+                  "2,24",
+                  "2,27",
+                  "2,30",
+                  "2,33",
+                  "2,36",
+                  "2,39",
+                  "2,42",
+                  "2,45"
+                ]
+              },
+              {
+                "cells": [
+                  "110",
+                  "2,48",
+                  "2,51",
+                  "2,54",
+                  "2,58",
+                  "2,61",
+                  "2,64",
+                  "2,67",
+                  "2,71",
+                  "2,74",
+                  "2,78"
+                ]
+              },
+              {
+                "cells": [
+                  "120",
+                  "2,81",
+                  "2,84",
+                  "2,88",
+                  "2,91",
+                  "2,95",
+                  "2,99",
+                  "3,02",
+                  "3,06",
+                  "3,10",
+                  "3,13"
+                ]
+              },
+              {
+                "cells": [
+                  "130",
+                  "3,17",
+                  "3,21",
+                  "3,25",
+                  "3,29",
+                  "3,32",
+                  "3,36",
+                  "3,40",
+                  "3,44",
+                  "3,48",
+                  "3,52"
+                ]
+              },
+              {
+                "cells": [
+                  "140",
+                  "3,56",
+                  "3,60",
+                  "3,64",
+                  "3,69",
+                  "3,73",
+                  "3,77",
+                  "3,81",
+                  "3,86",
+                  "3,90",
+                  "3,94"
+                ]
+              },
+              {
+                "cells": [
+                  "150",
+                  "3,98",
+                  "4,03",
+                  "4,07",
+                  "4,12",
+                  "4,16",
+                  "4,21",
+                  "4,25",
+                  "4,30",
+                  "4,34",
+                  "4,39"
+                ]
+              },
+              {
+                "cells": [
+                  "160",
+                  "4,44",
+                  "4,48",
+                  "4,53",
+                  "4,58",
+                  "4,62",
+                  "4,67",
+                  "4,72",
+                  "4,77",
+                  "4,82",
+                  "4,87"
+                ]
+              },
+              {
+                "cells": [
+                  "170",
+                  "4,92",
+                  "4,97",
+                  "5,02",
+                  "5,07",
+                  "5,12",
+                  "5,17",
+                  "5,22",
+                  "5,27",
+                  "5,32",
+                  "5,37"
+                ]
+              },
+              {
+                "cells": [
+                  "180",
+                  "5,42",
+                  "5,48",
+                  "5,53",
+                  "5,58",
+                  "5,64",
+                  "5,69",
+                  "5,74",
+                  "5,80",
+                  "5,85",
+                  "5,91"
+                ]
+              },
+              {
+                "cells": [
+                  "190",
+                  "5,96",
+                  "6,02",
+                  "6,07",
+                  "6,13",
+                  "6,18",
+                  "6,24",
+                  "6,30",
+                  "6,35",
+                  "6,41",
+                  "6,47"
+                ]
+              },
+              {
+                "cells": [
+                  "200",
+                  "6,52",
+                  "6,58",
+                  "6,64",
+                  "6,70",
+                  "6,76",
+                  "6,82",
+                  "6,88",
+                  "6,94",
+                  "7,00",
+                  "7,06"
+                ]
+              },
+              {
+                "cells": [
+                  "210",
+                  "7,12",
+                  "7,18",
+                  "7,24",
+                  "7,30",
+                  "7,36",
+                  "7,42",
+                  "7,48",
+                  "7,55",
+                  "7,61",
+                  "7,67"
+                ]
+              },
+              {
+                "cells": [
+                  "220",
+                  "7,74",
+                  "7,80",
+                  "7,86",
+                  "7,93",
+                  "7,99",
+                  "8,06",
+                  "8,12",
+                  "8,18",
+                  "8,25",
+                  "8,32"
+                ]
+              },
+              {
+                "cells": [
+                  "230",
+                  "8,38",
+                  "8,45",
+                  "8,51",
+                  "8,58",
+                  "8,65",
+                  "8,72",
+                  "8,78",
+                  "8,85",
+                  "8,92",
+                  "8,99"
+                ]
+              },
+              {
+                "cells": [
+                  "240",
+                  "9,06",
+                  "9,12",
+                  "9,19",
+                  "9,26",
+                  "9,33",
+                  "9,40",
+                  "9,47",
+                  "9,54",
+                  "9,61",
+                  "9,68"
+                ]
+              },
+              {
+                "cells": [
+                  "250",
+                  "9,76",
+                  "",
+                  "",
+                  "",
+                  "",
+                  "",
+                  "",
+                  "",
+                  "",
+                  ""
+                ]
+              }
+            ]
+          },
+          "bounding_box": {
+            "x": 535,
+            "y": 190,
+            "width": 447,
+            "height": 696
+          },
+          "student_label": null,
+          "model_self_confidence": 0.98,
+          "reconstruction_confidence": 0.95,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Profesora: Milagros Huerta Gómez de Merodio",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 3,
+            "y": 965,
+            "width": 329,
+            "height": 22
+          },
+          "student_label": null,
+          "model_self_confidence": 1.0,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Mecánica de los Medios Continuos y Teoría de Estructuras / Universidad de",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 435,
+            "y": 967,
+            "width": 579,
+            "height": 24
+          },
+          "student_label": null,
+          "model_self_confidence": 1.0,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        }
+      ],
+      "error": null
+    },
+    {
+      "page_num": 14,
+      "blocks": [
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "PROBLEMA 1: ESTRATEGIA CHAABI",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 139,
+            "y": 25,
+            "width": 861,
+            "height": 55
+          },
+          "student_label": null,
+          "model_self_confidence": 1.0,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Dada la cercha de la figura, calcular el valor máximo P (en kN sin decimales) que puede soportar para que no falle ninguna de sus barras de sección redonda maciza, de diámetro 30 mm. El valor de “a”, debe ser tal que la esbeltez de la barra 3 tenga un valor de 33.",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 20,
+            "y": 141,
+            "width": 980,
+            "height": 387
+          },
+          "student_label": null,
+          "model_self_confidence": 0.98,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "DIAGRAM",
+          "structure_type": null,
+          "raw_text": "Diagrama de cercha con barras numeradas 1 a 7, cargas 3P, P, 3P, y dimensiones",
+          "structured_content": {
+            "description": "Truss diagram with labeled nodes and elements"
+          },
+          "bounding_box": {
+            "x": 17,
+            "y": 366,
+            "width": 526,
+            "height": 482
+          },
+          "student_label": null,
+          "model_self_confidence": 0.95,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "6° EVALUAR SOLUCIÓN:",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 479,
+            "y": 339,
+            "width": 379,
+            "height": 37
+          },
+          "student_label": null,
+          "model_self_confidence": 0.98,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "6.1- ¿Tiene sentido el resultado obtenido? - Vuelve a Q1.2, ¿es ésta la respuesta a la pregunta?",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 476,
+            "y": 403,
+            "width": 978,
+            "height": 79
+          },
+          "student_label": "6.1-",
+          "model_self_confidence": 0.98,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Si.",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 580,
+            "y": 544,
+            "width": 33,
+            "height": 26
+          },
+          "student_label": null,
+          "model_self_confidence": 0.98,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Profesora: Milagros Huerta Gómez de Merodio",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 4,
+            "y": 969,
+            "width": 330,
+            "height": 19
+          },
+          "student_label": null,
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Mecánica de los Medios Continuos y Teoría de Estructuras / Universidad de",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 435,
+            "y": 969,
+            "width": 995,
+            "height": 19
+          },
+          "student_label": null,
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        }
+      ],
+      "error": null
+    },
+    {
+      "page_num": 15,
+      "blocks": [
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "PROBLEMA 1: ESTRATEGIA CHAABI",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 139,
+            "y": 26,
+            "width": 861,
+            "height": 55
+          },
+          "student_label": null,
+          "model_self_confidence": 1.0,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Dada la cercha de la figura, calcular el valor máximo P (en kN sin decimales) que puede soportar para que no falle ninguna de sus barras de sección redonda maciza, de diámetro 30 mm. El valor de \"a\", debe ser tal que la esbeltez de la barra 3 tenga un valor de 33.",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 20,
+            "y": 140,
+            "width": 980,
+            "height": 387
+          },
+          "student_label": null,
+          "model_self_confidence": 0.98,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "DIAGRAM",
+          "structure_type": null,
+          "raw_text": "Esquema de la cercha con cargas y dimensiones a, 2a, 3P, P, 3P y numeración de barras del 1 al 7",
+          "structured_content": {
+            "description": "Truss diagram with labeled nodes, members 1 to 7, supports, and loads."
+          },
+          "bounding_box": {
+            "x": 18,
+            "y": 369,
+            "width": 531,
+            "height": 454
+          },
+          "student_label": null,
+          "model_self_confidence": 0.95,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "6° EVALUAR SOLUCIÓN:",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 479,
+            "y": 339,
+            "width": 302,
+            "height": 39
+          },
+          "student_label": "6°",
+          "model_self_confidence": 1.0,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "6.2- ¿Es tu solución la mejor, o puedes sugerir una mejor?",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 476,
+            "y": 405,
+            "width": 963,
+            "height": 38
+          },
+          "student_label": "6.2-",
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Si, ya que nos hemos quitado el mayor numero de incógnitas razonando el comportamiento de la cercha ante la distribución de las cargas.",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 587,
+            "y": 512,
+            "width": 335,
+            "height": 102
+          },
+          "student_label": null,
+          "model_self_confidence": 0.95,
+          "reconstruction_confidence": null,
+          "origin": "HANDWRITTEN",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Profesora: Milagros Huerta Gómez de Merodio",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 5,
+            "y": 969,
+            "width": 329,
+            "height": 19
+          },
+          "student_label": null,
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Mecánica de los Medios Continuos y Teoría de Estructuras / Universidad de...",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 435,
+            "y": 969,
+            "width": 564,
+            "height": 19
+          },
+          "student_label": null,
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        }
+      ],
+      "error": null
+    },
+    {
+      "page_num": 16,
+      "blocks": [
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "PROBLEMA 1: ESTRATEGIA CHAABI",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 139,
+            "y": 25,
+            "width": 723,
+            "height": 55
+          },
+          "student_label": null,
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Dada la cercha de la figura, calcular el valor máximo P (en kN sin decimales) que puede soportar para que no falle ninguna de sus barras de sección redonda maciza, de diámetro 30 mm. El valor de \"a\", debe ser tal que la esbeltez de la barra 3 tenga un valor de 33.",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 20,
+            "y": 142,
+            "width": 974,
+            "height": 387
+          },
+          "student_label": null,
+          "model_self_confidence": 0.98,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "7° RETROALIMENTACIÓN:",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 478,
+            "y": 339,
+            "width": 303,
+            "height": 36
+          },
+          "student_label": null,
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "7.1. ¿Has tenido alguna dificultad para entender lo que se te pedía en este ejercicio?",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 478,
+            "y": 405,
+            "width": 979,
+            "height": 79
+          },
+          "student_label": "7.1",
+          "model_self_confidence": 0.98,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "No.",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 560,
+            "y": 526,
+            "width": 32,
+            "height": 26
+          },
+          "student_label": null,
+          "model_self_confidence": 0.95,
+          "reconstruction_confidence": null,
+          "origin": "HANDWRITTEN",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "DIAGRAM",
+          "structure_type": null,
+          "raw_text": "[Diagram of a truss with loads and supports]",
+          "structured_content": {
+            "description": "Schema of a structural truss with labels 1 through 7, applied loads 3P, P, 3P, and dimensions 'a' and '2a'."
+          },
+          "bounding_box": {
+            "x": 16,
+            "y": 372,
+            "width": 520,
+            "height": 453
+          },
+          "student_label": null,
+          "model_self_confidence": 0.95,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Profesora: Milagros Huerta Gómez de Merodio",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 3,
+            "y": 969,
+            "width": 331,
+            "height": 14
+          },
+          "student_label": null,
+          "model_self_confidence": 0.98,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Mecánica de los Medios Continuos y Teoría de Estructuras / Universidad de Cádiz",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 435,
+            "y": 969,
+            "width": 562,
+            "height": 14
+          },
+          "student_label": null,
+          "model_self_confidence": 0.98,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        }
+      ],
+      "error": null
+    },
+    {
+      "page_num": 17,
+      "blocks": [
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "PROBLEMA 1: ESTRATEGIA CHAABI",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 139,
+            "y": 25,
+            "width": 724,
+            "height": 55
+          },
+          "student_label": null,
+          "model_self_confidence": 1.0,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Dada la cercha de la figura, calcular el valor máximo P (en kN sin decimales) que puede soportar para que no falle ninguna de sus barras de sección redonda maciza, de diámetro 30 mm. El valor de “a”, debe ser tal que la esbeltez de la barra 3 tenga un valor de 33.",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 20,
+            "y": 140,
+            "width": 968,
+            "height": 387
+          },
+          "student_label": null,
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "DIAGRAM",
+          "structure_type": null,
+          "raw_text": "Esquema de cercha estructural con cargas 3P, P, 3P y dimensiones a, 2a, 2a, barras numeradas de 1 a 7.",
+          "structured_content": {
+            "description": "Truss diagram with labeled bars 1 to 7, dimensions a and 2a, and loads 3P, P, 3P."
+          },
+          "bounding_box": {
+            "x": 18,
+            "y": 371,
+            "width": 535,
+            "height": 451
+          },
+          "student_label": null,
+          "model_self_confidence": 0.95,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "7° RETROALIMENTACIÓN:",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 478,
+            "y": 339,
+            "width": 300,
+            "height": 32
+          },
+          "student_label": null,
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "7.2. ¿Te ha resultado útil seguir esta estructura para resolver el problema?",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 478,
+            "y": 405,
+            "width": 913,
+            "height": 79
+          },
+          "student_label": "7.2",
+          "model_self_confidence": 0.99,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Si.",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 554,
+            "y": 555,
+            "width": 52,
+            "height": 34
+          },
+          "student_label": null,
+          "model_self_confidence": 0.95,
+          "reconstruction_confidence": null,
+          "origin": "HANDWRITTEN",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Profesora: Milagros Huerta Gómez de Merodio",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 5,
+            "y": 969,
+            "width": 330,
+            "height": 14
+          },
+          "student_label": null,
+          "model_self_confidence": 1.0,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        },
+        {
+          "content_type": "TEXT",
+          "structure_type": null,
+          "raw_text": "Mecánica de los Medios Continuos y Teoría de Estructuras / Universidad de Sevilla",
+          "structured_content": null,
+          "bounding_box": {
+            "x": 435,
+            "y": 969,
+            "width": 560,
+            "height": 14
+          },
+          "student_label": null,
+          "model_self_confidence": 1.0,
+          "reconstruction_confidence": null,
+          "origin": "PRINTED",
+          "is_struck_through": false
+        }
+      ],
+      "error": null
+    }
+  ]
+}

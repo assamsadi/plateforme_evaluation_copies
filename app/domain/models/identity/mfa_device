@@ -1,0 +1,64 @@
+"""
+MFADevice = représente le second facteur d'authentification TOTP
+associé à un utilisateur.
+
+Cette table ne contient pas la logique de génération/vérification TOTP.
+Elle stocke uniquement les informations nécessaires pour permettre au
+service d'authentification de gérer MFA.
+
+Le secret TOTP doit être chiffré au niveau service avant stockage.
+"""
+
+import uuid
+from datetime import datetime
+
+from sqlalchemy import Boolean, DateTime, ForeignKey, String
+from sqlalchemy.dialects.postgresql import UUID as PGUUID
+from sqlalchemy.orm import Mapped, mapped_column
+
+from app.core.database import Base
+from app.domain.models.shared.mixins import TimestampMixin, UUIDPKMixin
+
+
+class MFADevice(Base, UUIDPKMixin, TimestampMixin):
+    __tablename__ = "mfa_devices"
+
+    # Utilisateur propriétaire du MFA
+    user_id: Mapped[uuid.UUID] = mapped_column(
+        PGUUID(as_uuid=True),
+        ForeignKey("users.id"),
+        nullable=False,
+    )
+
+    # Secret TOTP généré lors de l'activation MFA
+    # IMPORTANT : stocké chiffré, jamais en clair en production
+    secret_encrypted: Mapped[str] = mapped_column(
+        String(255),
+        nullable=False,
+    )
+
+    # MFA activé après validation du premier code
+    enabled: Mapped[bool] = mapped_column(
+        Boolean,
+        nullable=False,
+        default=False,
+    )
+
+    # Date où l'utilisateur a confirmé l'activation
+    verified_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True),
+        nullable=True,
+    )
+
+    # Dernière utilisation réussie du code MFA
+    last_used_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True),
+        nullable=True,
+    )
+
+    # Nom du type d'application utilisée
+    # Exemple : Google Authenticator, Microsoft Authenticator
+    device_name: Mapped[str | None] = mapped_column(
+        String(100),
+        nullable=True,
+    ) 

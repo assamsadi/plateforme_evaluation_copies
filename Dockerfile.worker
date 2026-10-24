@@ -1,0 +1,34 @@
+FROM python:3.14-slim
+
+WORKDIR /app
+
+# libgl1/libglib2.0-0 : requis à l'import par opencv-python (cv2), sinon
+# "ImportError: libGL.so.1: cannot open shared object file" au démarrage
+# du worker (OCR_Extraction_Agent importe cv2).
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends libgl1 libglib2.0-0 \
+    && rm -rf /var/lib/apt/lists/*
+
+# torch==2.13.0 depuis l'index PyPI par défaut installe le build CUDA
+# (plusieurs Go de bibliothèques nvidia_* inutiles ici — ce worker ne fait
+# que de l'inférence CPU via sentence-transformers, jamais de GPU). Installé
+# séparément depuis l'index CPU officiel PyTorch, dans SA PROPRE couche,
+# placée AVANT le COPY requirements.txt : cette couche (la plus lourde de
+# l'image) ne s'invalide donc plus à chaque changement de dépendance
+# applicative — seul un changement de version torch la refait télécharger.
+RUN pip install --no-cache-dir torch==2.13.0 --index-url https://download.pytorch.org/whl/cpu
+
+COPY requirements.txt .
+# Exclu du fichier avant install : sinon pip réinstallerait la version CUDA
+# en réconciliant "torch==2.13.0" avec l'index par défaut (aucun index CPU
+# déclaré pour cette deuxième passe).
+RUN grep -v '^torch==' requirements.txt > requirements.nocuda.txt \
+    && pip install --no-cache-dir -r requirements.nocuda.txt
+
+COPY app ./app
+
+# Pas de --pool=solo ici : c'était un contournement Windows (fork
+# indisponible), pas nécessaire dans ce conteneur Linux — le pool prefork
+# par défaut donne une vraie concurrence multi-process.
+CMD ["python", "-m", "celery", "-A", "app.worker_main:celery_app", "worker", \
+     "-Q", "ocr,llm,notifications,maintenance", "--loglevel=info"]
